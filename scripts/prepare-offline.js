@@ -222,6 +222,28 @@ function prepareFonts(){
   console.log('✅ css/fonts.css (' + count + ' خط)');
 }
 
+
+// ---------- محتوى المكتبة الإسلامية دون إنترنت ----------
+function prepareIslamicContent(){
+  const source = path.join(ROOT, 'content', 'islamic-library.json');
+  if(!fs.existsSync(source)) throw new Error('ملف محتوى المكتبة غير موجود: content/islamic-library.json');
+  const data = JSON.parse(fs.readFileSync(source, 'utf8'));
+  for(const key of ['seerah','prophets','hisn','events']){
+    if(!Array.isArray(data[key]) || data[key].length === 0) throw new Error('قسم فارغ أو غير صالح في المحتوى: ' + key);
+    for(let i=0;i<data[key].length;i++){
+      const item=data[key][i];
+      if(!item || typeof item.title !== 'string' || !item.title.trim() || typeof item.text !== 'string' || !item.text.trim()){
+        throw new Error('عنوان أو نص ناقص في ' + key + ' عند العنصر ' + (i+1));
+      }
+      if(item.date && !/^\d{2}-\d{2}$/.test(item.date)) throw new Error('تاريخ غير صالح في الحدث: ' + item.title);
+    }
+  }
+  mkdir(path.join(WWW, 'data'));
+  const target = path.join(WWW, 'data', 'islamic-library.js');
+  fs.writeFileSync(target, '/* محتوى محلي مُولّد وقت البناء؛ لا يحتاج إلى اتصال بعد التثبيت */\nwindow.ISLAMIC_CONTENT=' + JSON.stringify(data) + ';', 'utf8');
+  console.log('✅ data/islamic-library.js (' + data.seerah.length + ' سيرة، ' + data.prophets.length + ' قصة، ' + data.hisn.length + ' ذكر، ' + data.events.length + ' حدث)');
+}
+
 // ---------- التشغيل ----------
 async function main(){
   // 1) ملفات التطبيق
@@ -241,7 +263,10 @@ async function main(){
   // 3) الخطوط
   prepareFonts();
 
-  // 4) نص القرآن
+  // 4) تجهيز الموسوعة المحلية قبل محاولة جلب القرآن
+  prepareIslamicContent();
+
+  // 5) نص القرآن
   console.log('⏬ جلب نص القرآن (العثماني)...');
   const uth = await fetchEdition('quran-uthmani');
   if(!uth){
@@ -276,7 +301,7 @@ async function main(){
   console.log('🎉 اكتمل تجهيز www');
 }
 
-module.exports = { plain, stripBasmala, buildData };
+module.exports = { plain, stripBasmala, buildData, prepareIslamicContent };
 
 if(require.main === module){
   main().catch(e => { console.error('❌ ' + e.message); process.exit(1); });
