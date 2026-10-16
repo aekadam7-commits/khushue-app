@@ -1,0 +1,51 @@
+/* خُشوع — المكتبة الإسلامية والسيرة النبوية: محتوى محلي يعمل دون اتصال */
+const IslamicLibrary = {
+  category: 'الكل', query: '', seerahQuery: '',
+  items: [
+    {cat:'أذكار الاستيقاظ',title:'دعاء الاستيقاظ',text:'الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ',source:'صحيح البخاري'},
+    {cat:'أذكار المنزل',title:'دعاء دخول المنزل',text:'بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى اللَّهِ رَبِّنَا تَوَكَّلْنَا',source:'سنن أبي داود — يُراجع لفظ الرواية'},
+    {cat:'أذكار المسجد',title:'دعاء الذهاب إلى المسجد',text:'اللَّهُمَّ اجْعَلْ فِي قَلْبِي نُورًا، وَفِي لِسَانِي نُورًا، وَاجْعَلْ فِي سَمْعِي نُورًا، وَاجْعَلْ فِي بَصَرِي نُورًا',source:'صحيح مسلم — جزء من دعاء النور'},
+    {cat:'الطعام',title:'قبل الطعام',text:'بِسْمِ اللَّهِ',source:'متفق عليه في أصل التسمية'},
+    {cat:'الطعام',title:'بعد الطعام',text:'الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ',source:'سنن أبي داود والترمذي'},
+    {cat:'السفر',title:'دعاء السفر',text:'اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، اللَّهُ أَكْبَرُ، سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ، وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ',source:'صحيح مسلم — من دعاء السفر'},
+    {cat:'الكرب',title:'دعاء الكرب',text:'لَا إِلَهَ إِلَّا اللَّهُ الْعَظِيمُ الْحَلِيمُ، لَا إِلَهَ إِلَّا اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ',source:'صحيح البخاري وصحيح مسلم'},
+    {cat:'الهم والحزن',title:'دعاء الهم والحزن',text:'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْجُبْنِ وَالْبُخْلِ، وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ',source:'صحيح البخاري'},
+    {cat:'المرض',title:'دعاء للمريض',text:'أَسْأَلُ اللَّهَ الْعَظِيمَ رَبَّ الْعَرْشِ الْعَظِيمِ أَنْ يَشْفِيَكَ',source:'سنن أبي داود والترمذي — يقال سبع مرات'},
+    {cat:'الاستغفار',title:'سيد الاستغفار',text:'اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي، فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ',source:'صحيح البخاري'},
+    {cat:'دخول الخلاء',title:'دعاء دخول الخلاء',text:'اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ',source:'متفق عليه'},
+    {cat:'الخروج من الخلاء',title:'دعاء الخروج من الخلاء',text:'غُفْرَانَكَ',source:'سنن أبي داود والترمذي'},
+    {cat:'لباس',title:'دعاء لبس الثوب',text:'الْحَمْدُ لِلَّهِ الَّذِي كَسَانِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ',source:'سنن أبي داود والترمذي'},
+    {cat:'المطر',title:'عند نزول المطر',text:'اللَّهُمَّ صَيِّبًا نَافِعًا',source:'صحيح البخاري'},
+    {cat:'الريح',title:'عند هبوب الريح',text:'اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَهَا، وَخَيْرَ مَا فِيهَا، وَخَيْرَ مَا أُرْسِلَتْ بِهِ، وَأَعُوذُ بِكَ مِنْ شَرِّهَا، وَشَرِّ مَا فِيهَا، وَشَرِّ مَا أُرْسِلَتْ بِهِ',source:'صحيح مسلم'},
+    {cat:'المجلس',title:'كفارة المجلس',text:'سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا أَنْتَ، أَسْتَغْفِرُكَ وَأَتُوبُ إِلَيْكَ',source:'سنن أبي داود والترمذي'}
+  ],
+  events: [
+    ['قبل البعثة','وُلد النبي محمد ﷺ في مكة عام الفيل على المشهور. وتختلف المصادر في تحديد اليوم الدقيق لمولده.','مكة المكرمة'],
+    ['الطفولة والشباب','نشأ ﷺ في مكة، وكفله جده عبد المطلب ثم عمه أبو طالب، وعُرف بين قومه بالصدق والأمانة.','مكة المكرمة'],
+    ['الزواج من خديجة رضي الله عنها','تزوج خديجة بنت خويلد رضي الله عنها قبل البعثة، وكانت أول من آمن به وسانده.','مكة المكرمة'],
+    ['بدء الوحي','نزل الوحي عليه ﷺ في غار حراء، وكانت بداية الرسالة بآيات من سورة العلق.','غار حراء'],
+    ['الدعوة السرية ثم الجهرية','دعا النبي ﷺ إلى توحيد الله، وواجه المسلمون الأوائل أذى قريش وصبروا على ذلك.','مكة المكرمة'],
+    ['الهجرة إلى الحبشة','هاجر بعض الصحابة إلى الحبشة طلبًا للأمان، ثم استمرت الدعوة رغم اشتداد الأذى في مكة.','الحبشة'],
+    ['عام الحزن','توفي أبو طالب وخديجة رضي الله عنها في فترة متقاربة، فاشتد البلاء على النبي ﷺ.','مكة المكرمة'],
+    ['الإسراء والمعراج','أكرم الله نبيه ﷺ بالإسراء والمعراج، وفُرضت الصلاة في هذه الرحلة.','المسجد الحرام والمسجد الأقصى'],
+    ['الهجرة إلى المدينة','هاجر النبي ﷺ إلى المدينة بعد بيعة الأنصار، وأسس مجتمعًا مسلمًا متعاونًا.','المدينة المنورة'],
+    ['بناء المسجد والمؤاخاة','بُني المسجد النبوي، وآخى النبي ﷺ بين المهاجرين والأنصار ونظم العلاقات داخل المجتمع.','المدينة المنورة'],
+    ['غزوة بدر — 2 هـ','وقعت بدر في السنة الثانية للهجرة، وكانت حدثًا بارزًا في تاريخ المجتمع الإسلامي الأول.','بدر'],
+    ['غزوة أحد — 3 هـ','وقعت أحد في السنة الثالثة للهجرة، وفيها دروس في الطاعة والصبر والثبات.','جبل أحد'],
+    ['صلح الحديبية — 6 هـ','عقد النبي ﷺ صلح الحديبية مع قريش، وكان من الأحداث التي مهدت لانتشار الدعوة.','الحديبية'],
+    ['فتح مكة — 8 هـ','دخل النبي ﷺ مكة في السنة الثامنة للهجرة، وأعلن العفو في موقف مشهور من سيرته.','مكة المكرمة'],
+    ['حجة الوداع — 10 هـ','أدى النبي ﷺ حجة الوداع وألقى خطبته التي أكدت حرمة الدماء والأموال وحقوق الناس.','مكة المكرمة'],
+    ['وفاته ﷺ — 11 هـ','توفي النبي ﷺ في المدينة في السنة الحادية عشرة للهجرة، بعد أن بلّغ الرسالة وأدى الأمانة.','المدينة المنورة']
+  ],
+  escape(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));},
+  init(){this.renderCategories();this.renderItems();this.renderSeerah();},
+  renderCategories(){const box=document.getElementById('libraryCategories');if(!box)return;const cats=['الكل',...new Set(this.items.map(x=>x.cat))];box.innerHTML=cats.map(c=>`<button class="library-chip ${c===this.category?'active':''}" data-focus onclick="IslamicLibrary.setCategory('${this.escape(c)}')">${this.escape(c)}</button>`).join('');},
+  setCategory(c){this.category=c;this.renderCategories();this.renderItems();},
+  search(q){this.query=q||'';this.renderItems();},
+  renderItems(){const box=document.getElementById('libraryList');if(!box)return;const q=this.query.trim().toLowerCase();const rows=this.items.filter(x=>(this.category==='الكل'||x.cat===this.category)&&(!q||`${x.cat} ${x.title} ${x.text} ${x.source}`.toLowerCase().includes(q)));box.innerHTML=rows.length?rows.map((x,i)=>`<article class="library-item"><div class="library-item-top"><span class="library-tag">${this.escape(x.cat)}</span><div style="display:flex;gap:5px"><button class="library-copy" data-focus onclick="ReaderMode.openCollection('library',${this.items.indexOf(x)})">⛶ قراءة</button><button class="library-copy" data-focus onclick="IslamicLibrary.copyText(${this.items.indexOf(x)})">نسخ النص</button></div></div><h3>${this.escape(x.title)}</h3><p class="library-arabic">${this.escape(x.text)}</p><small>المصدر: ${this.escape(x.source)}</small></article>`).join(''):'<div class="library-empty">لا توجد نتائج مطابقة.</div>';},
+  copyText(i){const x=this.items[i];if(!x)return;const t=`${x.title}\n${x.text}\nالمصدر: ${x.source}`;if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(()=>toast('تم نسخ الدعاء')).catch(()=>this.fallbackCopy(t));else this.fallbackCopy(t);},
+  fallbackCopy(t){const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');toast('تم نسخ النص');}catch(e){toast(t);}a.remove();},
+  searchSeerah(q){this.seerahQuery=q||'';this.renderSeerah();},
+  renderSeerah(){const box=document.getElementById('seerahTimeline');if(!box)return;const q=this.seerahQuery.trim().toLowerCase();const rows=this.events.filter(x=>x.join(' ').toLowerCase().includes(q));box.innerHTML=rows.length?rows.map((x,i)=>`<article class="seerah-event"><div class="seerah-dot">${i+1}</div><div class="seerah-event-body"><h3>${this.escape(x[0])}</h3><p>${this.escape(x[1])}</p><span>📍 ${this.escape(x[2])}</span><button class="library-copy" data-focus style="margin-top:10px" onclick="ReaderMode.openCollection('seerah',${this.events.indexOf(x)})">⛶ قراءة بملء الشاشة</button></div></article>`).join(''):'<div class="library-empty">لا توجد نتائج مطابقة.</div>';}
+};
+document.addEventListener('DOMContentLoaded',()=>IslamicLibrary.init());
