@@ -108,8 +108,7 @@ const App = {
     }
     
     if(page === 'adhkar'){ try{ Adhkar.renderAll(); } catch(e){} }
-    if(page === 'library' || page === 'seerah'){ try{ IslamicLibrary.init(); } catch(e){} }
-    if(page === 'history-today'){ try{ TodayHistory.init(); } catch(e){} }
+    if(page === 'islamic-library'){ try{ IslamicSections.init(); } catch(e){} }
     if(page === 'mushaf'){ setTimeout(() => { try{ Mushaf.openMenu(); }catch(e){} }, 200); }
     if(page === 'settings'){ setTimeout(() => { try{ Adhan.updatePrayerTimesInSettings(); }catch(e){} }, 200); }
     

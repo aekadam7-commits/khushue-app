@@ -84,7 +84,6 @@ const Mushaf = {
     if(inText) html += '</div>';
     
     view.innerHTML = html;
-    if(typeof ReaderMode !== 'undefined' && ReaderMode.isOpen()) ReaderMode.syncMushaf();
     window.scrollTo({ top:0, behavior:'smooth' });
     
     if(Focus.enabled) setTimeout(() => {

@@ -5,7 +5,6 @@
 
 const Adhkar = {
   currentCat: 0,
-  counts: {},
   
   renderAll(){
     this.renderCats();
@@ -53,15 +52,8 @@ const Adhkar = {
       const ct = it.c === 1 ? 'مرة واحدة'
                 : (it.c === 2 ? 'مرتان' : it.c + ' مرة');
       
-      const key = this.currentCat + ':' + cat.items.indexOf(it);
-      const done = this.counts[key] || 0;
       d.innerHTML = '<div class="dhikr-text">' + it.t + '</div>' +
-                    '<div class="dhikr-count">📿 الهدف: ' + ct + '</div>' +
-                    '<button class="dhikr-tap" data-focus aria-label="تسجيل تكرار الذكر">' + done + ' / ' + it.c + '  · اضغط للتسبيح</button>' +
-                    '<button class="dhikr-reset" data-focus aria-label="إعادة عداد الذكر">إعادة</button>';
-      const tap = d.querySelector('.dhikr-tap');
-      tap.onclick = (ev) => { ev.stopPropagation(); const next = Math.min(it.c, (this.counts[key] || 0) + 1); this.counts[key] = next; tap.textContent = next + ' / ' + it.c + (next >= it.c ? ' ✓ اكتمل' : ' · اضغط للتسبيح'); if(next >= it.c) toast('أحسنت، اكتمل الذكر'); };
-      d.querySelector('.dhikr-reset').onclick = (ev) => { ev.stopPropagation(); this.counts[key] = 0; tap.textContent = '0 / ' + it.c + ' · اضغط للتسبيح'; };
+                    '<div class="dhikr-count">📿 ' + ct + '</div>';
       
       box.appendChild(d);
     });
