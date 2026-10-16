@@ -20,6 +20,33 @@ const Mushaf = {
     if(this.nightReading){
       document.body.classList.add('night-reading');
     }
+    
+    window.addEventListener('popstate', () => {
+      if(this._silentPop){ this._silentPop = false; return; }
+      if(document.body.classList.contains('mushaf-fs')){ this._fsHist = false; this.exitFullscreen(); }
+    });
+  },
+  
+  // ============ ملء الشاشة ============
+  enterFullscreen(){
+    document.body.classList.add('mushaf-fs');
+    if(!this._fsHist){ try{ history.pushState({ mushafFs:1 }, ''); this._fsHist = true; }catch(e){} }
+    window.scrollTo(0, 0);
+    if(Focus.enabled) setTimeout(() => { Focus.current = null; Focus.reset(); }, 200);
+  },
+  
+  exitFullscreen(){
+    document.body.classList.remove('mushaf-fs');
+    if(this._fsHist){
+      this._fsHist = false;
+      this._silentPop = true;
+      try{ history.back(); }catch(e){ this._silentPop = false; }
+    }
+  },
+  
+  toggleFullscreen(){
+    if(document.body.classList.contains('mushaf-fs')) this.exitFullscreen();
+    else this.enterFullscreen();
   },
   
   async load(page){
@@ -35,6 +62,8 @@ const Mushaf = {
     
     if(!view) return;
     if(title) title.textContent = 'الصفحة ' + page + ' من ' + this.totalPages;
+    const fsTitle = document.getElementById('mushafFsTitle');
+    if(fsTitle) fsTitle.textContent = 'الصفحة ' + page + ' من ' + this.totalPages;
     
     Loading.show(view, 'جارٍ التحميل...');
     
@@ -85,6 +114,7 @@ const Mushaf = {
     
     view.innerHTML = html;
     window.scrollTo({ top:0, behavior:'smooth' });
+    view.scrollTop = 0;
     
     if(Focus.enabled) setTimeout(() => {
       Focus.current = null;

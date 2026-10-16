@@ -35,6 +35,10 @@ const MushafControls = {
           'onclick="MushafControls.toggleNight()" title="قراءة ليلية">' +
           '🌙 ليلي' +
         '</button>' +
+        '<button class="mushaf-control-btn" data-focus ' +
+          'onclick="Mushaf.enterFullscreen()" title="ملء الشاشة">' +
+          '⛶ ملء الشاشة' +
+        '</button>' +
       '</div>';
   },
   

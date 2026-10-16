@@ -91,6 +91,7 @@ const App = {
   
   go(page){
     if(page !== 'quran' && document.body.classList.contains('quran-fs')){ try{ Quran.backToList(); }catch(e){ document.body.classList.remove('quran-fs'); } }
+    if(page !== 'mushaf' && document.body.classList.contains('mushaf-fs')){ try{ Mushaf.exitFullscreen(); }catch(e){ document.body.classList.remove('mushaf-fs'); } }
     this.currentPage = page;
     
     document.querySelectorAll('.page').forEach(p => {
