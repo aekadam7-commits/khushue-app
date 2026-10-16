@@ -1,0 +1,24 @@
+/* خُشوع — قرآن للحفظ بملء الشاشة + حركة السحب */
+body.quran-fs{overflow:hidden}
+body.quran-fs .page[data-page="quran"]{animation:none}
+body.quran-fs .quran-view:not(.hidden){
+  position:fixed;inset:0;z-index:9000;display:flex;flex-direction:column;
+  border-radius:0;box-shadow:none;background:var(--surface);
+}
+body.quran-fs .surah-header{padding:8px 12px;padding-top:max(8px,env(safe-area-inset-top));flex:0 0 auto}
+body.quran-fs .surah-title{font-size:18px}
+body.quran-fs .surah-toolbar{padding:6px 10px;flex:0 0 auto}
+body.quran-fs .tb-btn{padding:7px 11px;font-size:12px}
+body.quran-fs .surah-content{
+  flex:1 1 auto;min-height:0;max-height:none;
+  padding:12px 12px max(18px,env(safe-area-inset-bottom));
+  overscroll-behavior:contain;
+}
+body.quran-fs .ayah{padding:10px 8px;margin-bottom:6px}
+body:not([data-device="tv"]).quran-fs .surah-nav{display:none}
+
+/* حركة انزلاق خفيفة عند السحب */
+@keyframes swipeInNext{from{opacity:.25;transform:translateX(-26px)}to{opacity:1;transform:none}}
+@keyframes swipeInPrev{from{opacity:.25;transform:translateX(26px)}to{opacity:1;transform:none}}
+.swipe-anim-next{animation:swipeInNext .22s ease-out}
+.swipe-anim-prev{animation:swipeInPrev .22s ease-out}

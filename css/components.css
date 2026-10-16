@@ -900,7 +900,7 @@
   right:0;
   z-index:200;
   display:grid;
-  grid-template-columns:repeat(5,1fr);
+  grid-template-columns:repeat(6,1fr);
   background:var(--surface);
   border-top:1px solid var(--border);
   padding:6px 0 max(6px,env(safe-area-inset-bottom));
