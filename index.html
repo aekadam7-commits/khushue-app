@@ -22,6 +22,7 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
 <link rel="stylesheet" href="css/landscape.css">
 <link rel="stylesheet" href="css/night-reading.css">
 <link rel="stylesheet" href="css/islamic-library.css">
+<link rel="stylesheet" href="css/today-history.css">
 </head>
 <body>
 
@@ -153,6 +154,7 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
     <button class="sb-item" data-focus data-nav="adhkar" onclick="App.go('adhkar')"><span class="sb-icon">📿</span> الأذكار</button>
     <button class="sb-item" data-focus data-nav="library" onclick="App.go('library')"><span class="sb-icon">📚</span> المكتبة الإسلامية</button>
     <button class="sb-item" data-focus data-nav="seerah" onclick="App.go('seerah')"><span class="sb-icon">🌙</span> السيرة النبوية</button>
+    <button class="sb-item" data-focus data-nav="history-today" onclick="App.go('history-today')"><span class="sb-icon">📜</span> حدث في مثل هذا اليوم</button>
     <button class="sb-item" data-focus data-nav="tasbih" onclick="App.go('tasbih')"><span class="sb-icon">🔢</span> المسبحة</button>
     <button class="sb-item" data-focus data-nav="names99" onclick="App.go('names99')"><span class="sb-icon">🌟</span> الأسماء</button>
     <button class="sb-item" data-focus data-nav="calendar" onclick="App.go('calendar')"><span class="sb-icon">📅</span> التقويم</button>
@@ -207,12 +209,19 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
         <button class="tile" data-focus onclick="App.go('adhkar')"><span class="tile-icon">📿</span><span class="tile-label">الأذكار الموسعة</span></button>
         <button class="tile" data-focus onclick="App.go('library')"><span class="tile-icon">📚</span><span class="tile-label">حصن المسلم والمكتبة</span></button>
         <button class="tile" data-focus onclick="App.go('seerah')"><span class="tile-icon">🌙</span><span class="tile-label">السيرة النبوية</span></button>
+        <button class="tile" data-focus onclick="App.go('history-today')"><span class="tile-icon">📜</span><span class="tile-label">حدث في مثل هذا اليوم</span></button>
         <button class="tile" data-focus onclick="App.go('tasbih')"><span class="tile-icon">🔢</span><span class="tile-label">المسبحة</span></button>
         <button class="tile" data-focus onclick="App.go('names99')"><span class="tile-icon">🌟</span><span class="tile-label">الأسماء</span></button>
         <button class="tile" data-focus onclick="App.go('calendar')"><span class="tile-icon">📅</span><span class="tile-label">التقويم</span></button>
         <button class="tile" data-focus onclick="QRShare.showQR()"><span class="tile-icon">📤</span><span class="tile-label">مشاركة</span></button>
         <button class="tile" data-focus onclick="UnifiedSearch.openSearchDialog()"><span class="tile-icon">🔍</span><span class="tile-label">بحث شامل</span></button>
         <button class="tile" data-focus onclick="App.go('contact')"><span class="tile-icon">📞</span><span class="tile-label">اتصل بنا</span></button>
+      </div>
+
+      <div class="today-history-home card" role="region" aria-label="حدث في مثل هذا اليوم">
+        <div class="today-history-heading"><span>📜</span><div><div class="aod-label">حدث في مثل هذا اليوم</div><div class="today-history-date" id="todayHistoryHijri">جارٍ تحديد التاريخ الهجري…</div></div></div>
+        <h3 id="todayHistoryTitle">حدث تاريخي إسلامي</h3><p id="todayHistorySummary">تعرّف على أحداث من التاريخ الإسلامي مع التنبيه إلى اختلاف بعض التواريخ.</p>
+        <button class="library-copy" data-focus onclick="App.go('history-today')">استكشاف الأحداث ←</button>
       </div>
 
       <div class="card">
@@ -446,6 +455,15 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
       <div class="seerah-hero"><span>ﷺ</span><h3>سيرة النبي محمد ﷺ</h3><p>محطات من السيرة مرتبة زمنيًا، مع تمييز الروايات المشهورة والتنبيه إلى اختلاف بعض التواريخ.</p></div>
       <div class="library-search"><input id="seerahSearch" type="search" placeholder="ابحث في أحداث السيرة…" aria-label="ابحث في السيرة" oninput="IslamicLibrary.searchSeerah(this.value)"></div>
       <div class="seerah-timeline" id="seerahTimeline"></div>
+    </section>
+
+    <section class="page" data-page="history-today">
+      <div class="page-head"><button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button><h2>📜 حدث في مثل هذا اليوم</h2><span style="width:38px"></span></div>
+      <div class="today-history-hero"><div class="today-history-hero-icon">📜</div><div><h3>من ذاكرة التاريخ الإسلامي</h3><p>يعتمد عرض اليوم على التاريخ الهجري المحسوب على الجهاز. بعض الأحداث تختلف المصادر في تحديد يومها، لذلك نوضح درجة ثبوت التاريخ ولا نجزم بما هو مختلف فيه.</p></div></div>
+      <div class="today-history-current" id="todayHistoryCurrent" aria-live="polite"></div>
+      <h3 class="today-history-list-title">أحداث تاريخية معروفة وتواريخها المشهورة</h3>
+      <div id="todayHistoryAll" class="today-history-list"></div>
+      <p class="library-note">ملاحظة علمية: هذه قائمة تمهيدية مختارة وليست تقويمًا تاريخيًا شاملًا. تاريخ بعض الوقائع، ومنها الإسراء والمعراج ومولد النبي ﷺ، محل اختلاف بين أهل العلم والمؤرخين. قد يختلف التاريخ الهجري يومًا بحسب البلد وطريقة الحساب.</p>
     </section>
 
     <section class="page" data-page="tasbih">
@@ -784,6 +802,7 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
 <script src="js/qibla.js"></script>
 <script src="js/adhkar.js"></script>
 <script src="js/islamic-library.js"></script>
+<script src="js/today-history.js"></script>
 <script src="js/reader-mode.js"></script>
 <script src="js/tasbih.js"></script>
 <script src="js/names99.js"></script>
