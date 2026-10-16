@@ -1,0 +1,39 @@
+/* خُشوع — واجهات الموسوعة والقراءة الكاملة */
+.islamic-type-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 16px}
+.islamic-type-tabs button{border:1px solid var(--border);background:var(--surface-2);color:var(--text);border-radius:14px;padding:11px 14px;font:inherit;cursor:pointer;min-height:44px}
+.islamic-type-tabs button.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.islamic-tools{display:flex;gap:8px;align-items:center;margin-bottom:14px}
+.islamic-tools input{flex:1;min-width:0;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:12px;font:inherit}
+.islamic-tools button{border:1px solid var(--border);border-radius:12px;padding:11px 13px;background:var(--surface-2);color:var(--text);font:inherit;white-space:nowrap}
+.islamic-summary{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:14px 0;color:var(--text-muted);font-size:13px}
+.islamic-notice{border:1px solid var(--border);background:var(--surface-2);border-radius:14px;padding:13px 15px;margin-bottom:12px;line-height:1.8;font-size:14px}
+.islamic-entry{width:100%;display:flex;align-items:flex-start;gap:12px;text-align:right;padding:16px;margin:10px 0;border:1px solid var(--border);border-radius:17px;background:var(--surface);color:var(--text);cursor:pointer;font:inherit;box-shadow:0 3px 12px #00000008}
+.islamic-entry:focus-visible,.islamic-type-tabs button:focus-visible,.islamic-tools button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.islamic-entry-icon{display:flex;align-items:center;justify-content:center;flex:0 0 42px;height:42px;border-radius:13px;background:var(--surface-2);color:var(--primary);font-size:21px}
+.islamic-entry-body{display:flex;flex:1;min-width:0;flex-direction:column;gap:6px;line-height:1.8}
+.islamic-entry-body strong{font-family:'Reem Kufi',serif;font-size:17px;color:var(--primary)}
+.islamic-entry-body small{color:var(--text-muted);font-size:12px}
+.islamic-entry-body>span:not(.islamic-today-badge){font-size:14px;opacity:.92}
+.islamic-entry-arrow{font-size:26px;color:var(--gold);align-self:center}
+.islamic-today-badge{align-self:flex-start;background:var(--gold);color:#1b1b1b;padding:3px 9px;border-radius:99px;font-size:12px;font-weight:700}
+.islamic-reader-overlay{position:fixed;inset:0;z-index:9999;background:var(--bg,#f6f3eb);color:var(--text,#222);display:flex;flex-direction:column;overflow:hidden}
+.islamic-reader-overlay.hidden{display:none!important}
+.islamic-reader-toolbar{display:flex;align-items:center;gap:8px;padding:10px 12px;padding-top:max(10px,env(safe-area-inset-top));background:var(--surface);border-bottom:1px solid var(--border);flex-wrap:wrap;z-index:2}
+.islamic-reader-toolbar button{border:1px solid var(--border);background:var(--surface-2);color:var(--text);border-radius:11px;padding:9px 12px;min-height:40px;font:inherit;cursor:pointer}
+.islamic-reader-toolbar .reader-close{background:var(--primary);color:white;border-color:var(--primary)}
+.islamic-reader-titlebar{padding:14px 20px 5px;text-align:center;flex:0 0 auto}
+.islamic-reader-titlebar h2{font-family:'Reem Kufi',serif;font-size:clamp(19px,2.5vw,27px);margin:0;color:var(--primary)}
+.islamic-reader-titlebar small{display:block;margin-top:5px;color:var(--text-muted);line-height:1.7}
+.islamic-reader-body{flex:1;overflow-y:auto;overscroll-behavior:contain;max-width:1000px;width:100%;margin:0 auto;padding:16px clamp(20px,6vw,72px) 40px;line-height:2.15;font-size:22px;white-space:normal;direction:rtl}
+.islamic-reader-body p{margin:0 0 1.25em;text-align:justify}
+.islamic-reference{margin-top:28px;padding:15px 17px;border:1px solid var(--border);border-right:4px solid var(--gold);border-radius:13px;background:var(--surface-2);font-size:.8em;line-height:1.9}
+.islamic-reference strong{display:block;color:var(--primary);margin-bottom:6px}
+.islamic-reference p{margin:0}
+.islamic-reader-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;padding-bottom:max(10px,env(safe-area-inset-bottom));background:var(--surface);border-top:1px solid var(--border)}
+.islamic-reader-footer button{border:1px solid var(--border);border-radius:12px;background:var(--surface-2);color:var(--text);padding:11px 17px;min-height:44px;font:inherit}
+.islamic-reader-footer .reader-save{background:var(--primary);color:white;border-color:var(--primary)}
+.islamic-reader-position{font-size:13px;color:var(--text-muted);white-space:nowrap}
+.islamic-count-btn{margin-top:12px;background:var(--primary);color:white;border:0;border-radius:12px;padding:10px 14px;font:inherit}
+body.islamic-reading-open{overflow:hidden}
+@media(min-width:850px){.islamic-entry{padding:19px 22px}.islamic-entry-body strong{font-size:19px}.islamic-entry-body>span:not(.islamic-today-badge){font-size:15px}}
+@media(max-width:520px){.islamic-tools{flex-wrap:wrap}.islamic-tools input{flex-basis:100%}.islamic-reader-toolbar{gap:5px;padding-inline:7px}.islamic-reader-toolbar button{padding:8px 9px;font-size:13px}.islamic-reader-footer{gap:6px}.islamic-reader-footer button{padding:10px 12px;font-size:14px}.islamic-reader-body{padding-inline:18px}.islamic-entry{padding:12px;gap:9px}.islamic-entry-icon{flex-basis:35px;height:35px}}
