@@ -113,6 +113,7 @@ const IslamicSections = {
     const overlay = document.getElementById('islamicReaderOverlay');
     overlay.classList.remove('hidden');
     document.body.classList.add('islamic-reading-open');
+    try{ Swipe.hintOnce(); }catch(e){}
     try { if(Focus?.enabled) { Focus.current = null; Focus.reset(); } } catch(e){}
   },
   renderReader(item){
@@ -128,6 +129,7 @@ const IslamicSections = {
       if(item.dateNote) body.innerHTML += `<div class="islamic-reference"><strong>تنبيه تاريخي</strong><p>${this.escape(item.dateNote)}</p></div>`;
       if(item.count) body.innerHTML += `<div class="islamic-reference"><strong>عدد التكرار المقترح</strong><p>${item.count} ${item.count===1?'مرة':'مرة'} — لا تُعامل الأعداد إلا حيث ثبتت في المصدر.</p><button class="islamic-count-btn" data-focus onclick="IslamicSections.countDhikr(${item.count})">ابدأ العدّ <span id="islamicDhikrCounter">0</span> / ${item.count}</button></div>`;
       body.style.fontSize = this.fontSize+'px';
+      body.scrollTop = 0;
     }
     const saved = this.getSaved(this.readerType);
     const key = this.itemKey(item);

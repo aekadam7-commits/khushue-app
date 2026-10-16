@@ -22,11 +22,45 @@ const Quran = {
     this.repeat = parseInt(Store.get('repeat', '0'), 10);
     
     this.updateReciterDisplay();
+    this.renderRepeatBtn();
+    window.addEventListener('popstate', () => {
+      if(this._silentPop){ this._silentPop = false; return; }
+      if(document.body.classList.contains('quran-fs')){ this._fsHist = false; this.backToList(); }
+    });
     this.renderList();
     this.renderSetReciterLabel();
     this.renderSetRepeatLabel();
   },
   
+  renderRepeatBtn(){
+    const labels = { 0:'لا تكرار', 1:'×1', 2:'×2', 5:'×5' };
+    const btn = document.getElementById('repeatBtn');
+    if(btn) btn.textContent = '🔁 ' + (labels[this.repeat] || 'لا تكرار');
+  },
+
+  enterFullscreen(){
+    document.body.classList.add('quran-fs');
+    if(!this._fsHist){ try{ history.pushState({ quranFs:1 }, ''); this._fsHist = true; }catch(e){} }
+  },
+
+  exitFullscreen(){
+    document.body.classList.remove('quran-fs');
+    if(this._fsHist){
+      this._fsHist = false;
+      this._silentPop = true;
+      try{ history.back(); }catch(e){ this._silentPop = false; }
+    }
+  },
+
+  changeFont(delta){
+    let f = parseInt(Store.get('quranFont', 28), 10) || 28;
+    f = Math.max(20, Math.min(48, f + delta));
+    Store.set('quranFont', f);
+    document.documentElement.style.setProperty('--quran-fs', f + 'px');
+    const sf = document.getElementById('setQuranFont');
+    if(sf) sf.value = f;
+  },
+
   renderSetReciterLabel(){
     const r = RECITERS.find(x => x.id === this.reciter);
     const lbl = document.getElementById('setReciterLabel');
@@ -123,6 +157,8 @@ const Quran = {
     document.getElementById('surahSub').textContent = s[3] + ' • ' + s[2] + ' آية';
     document.getElementById('quranListView').classList.add('hidden');
     document.getElementById('quranSurahView').classList.remove('hidden');
+    this.enterFullscreen();
+    try{ Swipe.hintOnce(); }catch(e){}
     
     const c = document.getElementById('surahContent');
     Loading.show(c, 'جارٍ التحميل...');
@@ -175,6 +211,7 @@ const Quran = {
   
   backToList(){
     this.stop();
+    this.exitFullscreen();
     document.getElementById('quranSurahView').classList.add('hidden');
     document.getElementById('quranListView').classList.remove('hidden');
     
@@ -185,6 +222,7 @@ const Quran = {
   },
   
   goSurah(dir){
+    this.stop();
     let n = this.currentSurah + dir;
     if(n < 1) n = 114;
     if(n > 114) n = 1;

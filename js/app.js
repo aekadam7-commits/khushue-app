@@ -71,6 +71,7 @@ const App = {
     try{ SleepTimer.init(); } catch(e){}
     try{ IslamicNotifications.init(); } catch(e){}
     try{ Focus.init(); } catch(e){}
+    try{ Swipe.init(); } catch(e){}
     
     this.go('home');
   },
@@ -89,6 +90,7 @@ const App = {
   },
   
   go(page){
+    if(page !== 'quran' && document.body.classList.contains('quran-fs')){ try{ Quran.backToList(); }catch(e){ document.body.classList.remove('quran-fs'); } }
     this.currentPage = page;
     
     document.querySelectorAll('.page').forEach(p => {
@@ -107,7 +109,7 @@ const App = {
       try{ Calendar.render(); } catch(e){}
     }
     
-    if(page === 'adhkar'){ try{ Adhkar.renderAll(); } catch(e){} }
+    if(page === 'adhkar'){ try{ Adhkar.renderAll(); Swipe.hintOnce(); } catch(e){} }
     if(page === 'islamic-library'){ try{ IslamicSections.init(); } catch(e){} }
     if(page === 'mushaf'){ setTimeout(() => { try{ Mushaf.openMenu(); }catch(e){} }, 200); }
     if(page === 'settings'){ setTimeout(() => { try{ Adhan.updatePrayerTimesInSettings(); }catch(e){} }, 200); }
