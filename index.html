@@ -362,6 +362,13 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
         </div>
       </div>
 
+      <div class="mushaf-fs-bar" id="mushafFsBar">
+        <button class="mushaf-fs-btn" data-focus onclick="Mushaf.exitFullscreen()" title="خروج من ملء الشاشة">✕</button>
+        <button class="mushaf-fs-btn" data-focus onclick="Mushaf.prev()">‹</button>
+        <div class="mushaf-fs-title" id="mushafFsTitle">—</div>
+        <button class="mushaf-fs-btn" data-focus onclick="Mushaf.next()">›</button>
+      </div>
+
       <div class="mushaf-view" id="mushafView">
         <div style="text-align:center;padding:30px;color:var(--muted)">📖 جارٍ التحميل...</div>
       </div>
