@@ -21,8 +21,7 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="css/landscape.css">
 <link rel="stylesheet" href="css/night-reading.css">
-<link rel="stylesheet" href="css/islamic-library.css">
-<link rel="stylesheet" href="css/today-history.css">
+<link rel="stylesheet" href="css/islamic-sections.css">
 </head>
 <body>
 
@@ -152,9 +151,7 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
     <button class="sb-item" data-focus data-nav="prayer" onclick="App.go('prayer')"><span class="sb-icon">🕌</span> الصلاة</button>
     <button class="sb-item" data-focus data-nav="qibla" onclick="App.go('qibla')"><span class="sb-icon">🧭</span> القبلة</button>
     <button class="sb-item" data-focus data-nav="adhkar" onclick="App.go('adhkar')"><span class="sb-icon">📿</span> الأذكار</button>
-    <button class="sb-item" data-focus data-nav="library" onclick="App.go('library')"><span class="sb-icon">📚</span> المكتبة الإسلامية</button>
-    <button class="sb-item" data-focus data-nav="seerah" onclick="App.go('seerah')"><span class="sb-icon">🌙</span> السيرة النبوية</button>
-    <button class="sb-item" data-focus data-nav="history-today" onclick="App.go('history-today')"><span class="sb-icon">📜</span> حدث في مثل هذا اليوم</button>
+    <button class="sb-item" data-focus data-nav="islamic-library" onclick="App.go('islamic-library')"><span class="sb-icon">📚</span> المكتبة الإسلامية</button>
     <button class="sb-item" data-focus data-nav="tasbih" onclick="App.go('tasbih')"><span class="sb-icon">🔢</span> المسبحة</button>
     <button class="sb-item" data-focus data-nav="names99" onclick="App.go('names99')"><span class="sb-icon">🌟</span> الأسماء</button>
     <button class="sb-item" data-focus data-nav="calendar" onclick="App.go('calendar')"><span class="sb-icon">📅</span> التقويم</button>
@@ -206,10 +203,11 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
         <button class="tile" data-focus onclick="App.go('mushaf')"><span class="tile-icon">📚</span><span class="tile-label">مصحف للقراءة</span></button>
         <button class="tile" data-focus onclick="App.go('prayer')"><span class="tile-icon">🕌</span><span class="tile-label">الصلاة</span></button>
         <button class="tile" data-focus onclick="App.go('qibla')"><span class="tile-icon">🧭</span><span class="tile-label">القبلة</span></button>
-        <button class="tile" data-focus onclick="App.go('adhkar')"><span class="tile-icon">📿</span><span class="tile-label">الأذكار الموسعة</span></button>
-        <button class="tile" data-focus onclick="App.go('library')"><span class="tile-icon">📚</span><span class="tile-label">حصن المسلم والمكتبة</span></button>
-        <button class="tile" data-focus onclick="App.go('seerah')"><span class="tile-icon">🌙</span><span class="tile-label">السيرة النبوية</span></button>
-        <button class="tile" data-focus onclick="App.go('history-today')"><span class="tile-icon">📜</span><span class="tile-label">حدث في مثل هذا اليوم</span></button>
+        <button class="tile" data-focus onclick="App.go('adhkar')"><span class="tile-icon">📿</span><span class="tile-label">الأذكار</span></button>
+        <button class="tile" data-focus onclick="IslamicSections.goTo('hisn')"><span class="tile-icon">🤲</span><span class="tile-label">حصن المسلم</span></button>
+        <button class="tile" data-focus onclick="IslamicSections.goTo('seerah')"><span class="tile-icon">ﷺ</span><span class="tile-label">السيرة النبوية</span></button>
+        <button class="tile" data-focus onclick="IslamicSections.goTo('prophets')"><span class="tile-icon">📖</span><span class="tile-label">قصص الأنبياء</span></button>
+        <button class="tile" data-focus onclick="IslamicSections.goTo('events')"><span class="tile-icon">📜</span><span class="tile-label">حدث في مثل هذا اليوم</span></button>
         <button class="tile" data-focus onclick="App.go('tasbih')"><span class="tile-icon">🔢</span><span class="tile-label">المسبحة</span></button>
         <button class="tile" data-focus onclick="App.go('names99')"><span class="tile-icon">🌟</span><span class="tile-label">الأسماء</span></button>
         <button class="tile" data-focus onclick="App.go('calendar')"><span class="tile-icon">📅</span><span class="tile-label">التقويم</span></button>
@@ -218,17 +216,30 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
         <button class="tile" data-focus onclick="App.go('contact')"><span class="tile-icon">📞</span><span class="tile-label">اتصل بنا</span></button>
       </div>
 
-      <div class="today-history-home card" role="region" aria-label="حدث في مثل هذا اليوم">
-        <div class="today-history-heading"><span>📜</span><div><div class="aod-label">حدث في مثل هذا اليوم</div><div class="today-history-date" id="todayHistoryHijri">جارٍ تحديد التاريخ الهجري…</div></div></div>
-        <h3 id="todayHistoryTitle">حدث تاريخي إسلامي</h3><p id="todayHistorySummary">تعرّف على أحداث من التاريخ الإسلامي مع التنبيه إلى اختلاف بعض التواريخ.</p>
-        <button class="library-copy" data-focus onclick="App.go('history-today')">استكشاف الأحداث ←</button>
-      </div>
-
       <div class="card">
         <div class="aod-label">🌅 آية اليوم</div>
         <div class="aod-text" id="aodText">—</div>
         <div class="aod-ref" id="aodRef">—</div>
       </div>
+    </section>
+
+    <section class="page" data-page="islamic-library">
+      <div class="page-head">
+        <button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button>
+        <h2>📚 المكتبة الإسلامية</h2>
+        <button class="icon-btn" data-focus onclick="IslamicSections.openSaved()" title="متابعة القراءة" style="background:var(--surface-2);color:var(--primary)">🔖</button>
+      </div>
+      <div class="islamic-type-tabs" role="tablist" aria-label="أقسام المكتبة">
+        <button data-focus data-islamic-type="seerah" onclick="IslamicSections.setType('seerah')">السيرة النبوية</button>
+        <button data-focus data-islamic-type="prophets" onclick="IslamicSections.setType('prophets')">قصص الأنبياء</button>
+        <button data-focus data-islamic-type="hisn" onclick="IslamicSections.setType('hisn')">حصن المسلم</button>
+        <button data-focus data-islamic-type="events" onclick="IslamicSections.setType('events')">حدث في مثل هذا اليوم</button>
+      </div>
+      <div class="islamic-tools">
+        <input id="islamicSearch" type="search" placeholder="ابحث في النصوص والعناوين والمراجع..." oninput="IslamicSections.search()" aria-label="البحث في المكتبة الإسلامية">
+        <button data-focus onclick="IslamicSections.openSaved()">🔖 متابعة القراءة</button>
+      </div>
+      <div id="islamicContent" aria-live="polite"><div class="card">جارٍ تجهيز المحتوى المحلي...</div></div>
     </section>
 
     <section class="page" data-page="quran">
@@ -332,7 +343,7 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
       <div class="page-head">
         <button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button>
         <h2>📚 مصحف للقراءة</h2>
-        <div style="display:flex;gap:6px"><button class="btn-secondary" data-focus onclick="ReaderMode.openMushaf()" style="padding:8px 10px">⛶ ملء الشاشة</button><button class="icon-btn" data-focus onclick="Mushaf.openMenu()" style="background:var(--surface-2);color:var(--primary)">📖</button></div>
+        <button class="icon-btn" data-focus onclick="Mushaf.openMenu()" style="background:var(--surface-2);color:var(--primary)">📖</button>
       </div>
 
       <div class="card" style="padding:10px">
@@ -439,31 +450,6 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
 
       <div class="adhkar-cats" id="adhkarCats"></div>
       <div class="adhkar-list" id="adhkarList"></div>
-    </section>
-
-    <section class="page" data-page="library">
-      <div class="page-head"><button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button><h2>📚 المكتبة الإسلامية</h2><span style="width:38px"></span></div>
-      <div class="library-hero"><div class="library-hero-icon">📖</div><div><h3>زاد المسلم اليومي</h3><p>أدعية مختارة، أبواب متنوعة، وقراءة مريحة دون الحاجة إلى الاتصال بالإنترنت.</p></div></div>
-      <div class="library-search"><input id="librarySearch" type="search" placeholder="ابحث في الأدعية والأبواب…" aria-label="ابحث في المكتبة" oninput="IslamicLibrary.search(this.value)"></div>
-      <div class="library-categories" id="libraryCategories"></div>
-      <div class="library-list" id="libraryList"></div>
-      <p class="library-note">تنبيه: هذه مجموعة مختارة وليست نقلًا كاملًا لكتاب حصن المسلم. يُرجى مراجعة مصادر الحديث المعتمدة عند الحاجة إلى التخريج التفصيلي.</p>
-    </section>
-
-    <section class="page" data-page="seerah">
-      <div class="page-head"><button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button><h2>🌙 السيرة النبوية</h2><span style="width:38px"></span></div>
-      <div class="seerah-hero"><span>ﷺ</span><h3>سيرة النبي محمد ﷺ</h3><p>محطات من السيرة مرتبة زمنيًا، مع تمييز الروايات المشهورة والتنبيه إلى اختلاف بعض التواريخ.</p></div>
-      <div class="library-search"><input id="seerahSearch" type="search" placeholder="ابحث في أحداث السيرة…" aria-label="ابحث في السيرة" oninput="IslamicLibrary.searchSeerah(this.value)"></div>
-      <div class="seerah-timeline" id="seerahTimeline"></div>
-    </section>
-
-    <section class="page" data-page="history-today">
-      <div class="page-head"><button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button><h2>📜 حدث في مثل هذا اليوم</h2><span style="width:38px"></span></div>
-      <div class="today-history-hero"><div class="today-history-hero-icon">📜</div><div><h3>من ذاكرة التاريخ الإسلامي</h3><p>يعتمد عرض اليوم على التاريخ الهجري المحسوب على الجهاز. بعض الأحداث تختلف المصادر في تحديد يومها، لذلك نوضح درجة ثبوت التاريخ ولا نجزم بما هو مختلف فيه.</p></div></div>
-      <div class="today-history-current" id="todayHistoryCurrent" aria-live="polite"></div>
-      <h3 class="today-history-list-title">أحداث تاريخية معروفة وتواريخها المشهورة</h3>
-      <div id="todayHistoryAll" class="today-history-list"></div>
-      <p class="library-note">ملاحظة علمية: هذه قائمة تمهيدية مختارة وليست تقويمًا تاريخيًا شاملًا. تاريخ بعض الوقائع، ومنها الإسراء والمعراج ومولد النبي ﷺ، محل اختلاف بين أهل العلم والمؤرخين. قد يختلف التاريخ الهجري يومًا بحسب البلد وطريقة الحساب.</p>
     </section>
 
     <section class="page" data-page="tasbih">
@@ -747,9 +733,27 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
     <button data-focus data-nav="home" onclick="App.go('home')">🏠</button>
     <button data-focus data-nav="quran" onclick="App.go('quran')">📖</button>
     <button data-focus data-nav="quran-listen" onclick="App.go('quran-listen')">🎧</button>
+    <button data-focus data-nav="islamic-library" onclick="App.go('islamic-library')">📚</button>
     <button data-focus data-nav="prayer" onclick="App.go('prayer')">🕌</button>
     <button data-focus data-nav="settings" onclick="App.go('settings')">⚙️</button>
   </nav>
+</div>
+
+<div id="islamicReaderOverlay" class="islamic-reader-overlay hidden" role="dialog" aria-modal="true" aria-label="قارئ المكتبة الإسلامية">
+  <div class="islamic-reader-toolbar">
+    <button class="reader-close" data-focus onclick="IslamicSections.closeReader()">✕ إغلاق</button>
+    <button data-focus onclick="IslamicSections.changeFont(-2)" aria-label="تصغير الخط">A−</button>
+    <button data-focus onclick="IslamicSections.changeFont(2)" aria-label="تكبير الخط">A+</button>
+    <span style="flex:1"></span>
+    <span class="islamic-reader-position" id="islamicReaderPosition">—</span>
+  </div>
+  <div class="islamic-reader-titlebar"><h2 id="islamicReaderTitle">—</h2><small id="islamicReaderMeta"></small></div>
+  <article id="islamicReaderBody" class="islamic-reader-body"></article>
+  <div class="islamic-reader-footer">
+    <button data-focus onclick="IslamicSections.prev()">‹ السابق</button>
+    <button class="reader-save" id="islamicSaveBtn" data-focus onclick="IslamicSections.savePosition()">🔖 حفظ الموضع</button>
+    <button data-focus onclick="IslamicSections.next()">التالي ›</button>
+  </div>
 </div>
 
 <div id="qiblaFull" class="qibla-full hidden">
@@ -801,9 +805,7 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
 <script src="js/bookmark.js"></script>
 <script src="js/qibla.js"></script>
 <script src="js/adhkar.js"></script>
-<script src="js/islamic-library.js"></script>
-<script src="js/today-history.js"></script>
-<script src="js/reader-mode.js"></script>
+<script src="js/islamic-sections.js"></script>
 <script src="js/tasbih.js"></script>
 <script src="js/names99.js"></script>
 <script src="js/calendar.js"></script>
