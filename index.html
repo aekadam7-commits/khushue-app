@@ -22,6 +22,7 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
 <link rel="stylesheet" href="css/landscape.css">
 <link rel="stylesheet" href="css/night-reading.css">
 <link rel="stylesheet" href="css/islamic-sections.css">
+<link rel="stylesheet" href="css/reading-fullscreen.css">
 </head>
 <body>
 
@@ -268,6 +269,9 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
           <button class="tb-btn" data-focus onclick="Quran.prevAyah()">⏮ السابقة</button>
           <button class="tb-btn" data-focus onclick="Quran.nextAyah()">⏭ التالية</button>
           <button class="tb-btn" data-focus id="repeatBtn" onclick="Quran.cycleRepeat()">🔁 لا تكرار</button>
+          <button class="tb-btn" data-focus onclick="Quran.changeFont(-2)">A−</button>
+          <button class="tb-btn" data-focus onclick="Quran.changeFont(2)">A+</button>
+          <button class="tb-btn" data-focus onclick="Quran.openReciters()">🎙️ القارئ</button>
         </div>
 
         <div class="surah-content" id="surahContent">
@@ -812,6 +816,7 @@ window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
 <script src="js/ticker.js"></script>
 <script src="js/unified-search.js"></script>
 <script src="js/islamic-notifications.js"></script>
+<script src="js/swipe.js"></script>
 <script src="js/app.js"></script>
 </body>
   </html>
