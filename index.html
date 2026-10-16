@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b2e2a">
+<title>خُشوع — آمنة ومهاب</title>
+
+<link rel="stylesheet" href="css/fonts.css">
+
+<script src="vendor/adhan.umd.min.js"></script>
+<script src="vendor/qrcode.js"></script>
+<script>
+window.__adhanReady = Promise.resolve(typeof adhan !== "undefined");
+</script>
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/screens.css">
+<link rel="stylesheet" href="css/tv.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/landscape.css">
+<link rel="stylesheet" href="css/night-reading.css">
+<link rel="stylesheet" href="css/islamic-library.css">
+</head>
+<body>
+
+<div id="splash" class="splash hidden">
+  <div class="splash-inner">
+    <div class="splash-icon">🕌</div>
+    <h1>خُشوع</h1>
+    <div class="splash-kids">آمنة <span>•</span> مهاب</div>
+    <div class="splash-divider"></div>
+    <p class="splash-ar">﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾</p>
+    <div class="loader"></div>
+  </div>
+</div>
+
+<div id="setupScreen">
+  <div class="setup-box">
+    <div class="setup-icon">🕌</div>
+    <h1>خُشوع</h1>
+    <div class="subtitle">آمنة • مهاب</div>
+    <p>أهلًا بك في تطبيق خُشوع<br>اختر نوع الجهاز:</p>
+    <div class="setup-choices">
+      <button class="setup-choice" data-choice="phone" onclick="Setup.choose('phone')">
+        <span class="icon">📱</span>
+        <span class="name">هاتف / تابلت</span>
+        <span class="desc">لمس وإيماءات</span>
+      </button>
+      <button class="setup-choice" data-choice="tv" onclick="Setup.choose('tv')">
+        <span class="icon">📺</span>
+        <span class="name">تلفاز</span>
+        <span class="desc">ريموت (D-Pad)</span>
+      </button>
+    </div>
+    <button class="btn-secondary" style="width:100%;padding:14px" onclick="Setup.autoDetect()">
+      🔍 اكتشاف تلقائي
+    </button>
+  </div>
+</div>
+
+<div id="permissionsScreen" class="hidden">
+  <div class="permissions-box">
+    <div class="perm-icon">🕌</div>
+    <h2>أهلاً بك في خُشوع</h2>
+    <p>لتفعيل جميع الميزات، نحتاج إلى بعض الأذونات:</p>
+    <div class="perm-card" id="permNotif">
+      <div class="perm-card-icon">🔔</div>
+      <div class="perm-card-info">
+        <strong>الإشعارات</strong>
+        <span></span>
+      </div>
+      <button class="perm-btn" data-focus onclick="Permissions.requestNotif()">تفعيل</button>
+    </div>
+    <div class="perm-card" id="permLoc">
+      <div class="perm-card-icon">📍</div>
+      <div class="perm-card-info">
+        <strong>الموقع الجغرافي</strong>
+        <span></span>
+      </div>
+      <button class="perm-btn" data-focus onclick="Permissions.requestLoc()">تفعيل</button>
+    </div>
+    <button class="perm-continue" data-focus onclick="Permissions.skip()">
+      متابعة إلى التطبيق ←
+    </button>
+  </div>
+</div>
+
+<div id="adhanScreen" class="hidden">
+  <div class="adhan-screen-inner">
+    <div class="adhan-screen-icon">🕌</div>
+    <div class="adhan-screen-title">حَيَّ عَلَى الصَّلَاة</div>
+    <div class="adhan-screen-sub" id="adhanScreenPrayer">حان وقت الصلاة</div>
+    <div class="adhan-screen-time" id="adhanScreenTime">—</div>
+    <div class="adhan-words">
+      <p class="highlight">اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ</p>
+      <p>أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ</p>
+      <p>أَشْهَدُ أَنَّ مُحَمَّدًا رَسُولُ اللَّهِ</p>
+      <p class="highlight">حَيَّ عَلَى الصَّلَاة</p>
+      <p class="highlight">حَيَّ عَلَى الْفَلَاح</p>
+      <p id="adhanFajrLine" class="hidden" style="color:#e8d5a2;font-weight:700">الصَّلَاةُ خَيْرٌ مِنَ النَّوْم</p>
+      <p>اللَّهُ أَكْبَرُ اللَّهُ أَكْبَرُ</p>
+      <p class="highlight">لَا إِلَهَ إِلَّا اللَّهُ</p>
+    </div>
+    <div class="adhan-screen-actions">
+      <button class="adhan-screen-btn continue" id="btnAdhanContinue" data-focus onclick="Adhan.continueFromScreen()">
+        🔊 استمر
+      </button>
+      <button class="adhan-screen-btn stop" id="btnAdhanStop" data-focus onclick="Adhan.stopFromScreen()">
+        ⏹ إيقاف
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="duaScreen" class="hidden">
+  <div class="dua-screen-inner">
+    <div class="dua-screen-icon">🤲</div>
+    <div class="dua-screen-title">دُعَاءُ بَعْدَ الأَذَان</div>
+    <div class="dua-screen-sub">عن جابر بن عبد الله رضي الله عنه</div>
+    <div class="dua-text-wrap">
+      <p>اللَّهُمَّ رَبَّ هَذِهِ الدَّعْوَةِ التَّامَّةِ،</p>
+      <p>وَالصَّلَاةِ الْقَائِمَةِ،</p>
+      <p class="dua-highlight">آتِ مُحَمَّدًا الْوَسِيلَةَ وَالْفَضِيلَةَ،</p>
+      <p>وَابْعَثْهُ مَقَامًا مَحْمُودًا الَّذِي وَعَدْتَهُ،</p>
+      <p>إِنَّكَ لَا تُخْلِفُ الْمِيعَادَ.</p>
+    </div>
+    <div class="dua-screen-actions">
+      <button class="dua-screen-btn primary" id="btnDuaListen" data-focus onclick="Adhan.toggleDuaAudio()">
+        🔊 استماع
+      </button>
+      <button class="dua-screen-btn" id="btnDuaClose" data-focus onclick="Adhan.closeDuaScreen()">
+        ✖ إغلاق
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="app" class="app hidden">
+
+  <nav class="nav-sidebar" id="navSidebar">
+    <div class="sb-brand">
+      <span class="b1">🕌 خُشوع</span>
+      <span class="b2">آمنة • مهاب</span>
+    </div>
+    <button class="sb-item" data-focus data-nav="home" onclick="App.go('home')"><span class="sb-icon">🏠</span> الرئيسية</button>
+    <button class="sb-item" data-focus data-nav="quran" onclick="App.go('quran')"><span class="sb-icon">📖</span> قرآن للحفظ</button>
+    <button class="sb-item" data-focus data-nav="quran-listen" onclick="App.go('quran-listen')"><span class="sb-icon">🎧</span> قرآن للاستماع</button>
+    <button class="sb-item" data-focus data-nav="mushaf" onclick="App.go('mushaf')"><span class="sb-icon">📚</span> مصحف للقراءة</button>
+    <button class="sb-item" data-focus data-nav="prayer" onclick="App.go('prayer')"><span class="sb-icon">🕌</span> الصلاة</button>
+    <button class="sb-item" data-focus data-nav="qibla" onclick="App.go('qibla')"><span class="sb-icon">🧭</span> القبلة</button>
+    <button class="sb-item" data-focus data-nav="adhkar" onclick="App.go('adhkar')"><span class="sb-icon">📿</span> الأذكار</button>
+    <button class="sb-item" data-focus data-nav="library" onclick="App.go('library')"><span class="sb-icon">📚</span> المكتبة الإسلامية</button>
+    <button class="sb-item" data-focus data-nav="seerah" onclick="App.go('seerah')"><span class="sb-icon">🌙</span> السيرة النبوية</button>
+    <button class="sb-item" data-focus data-nav="tasbih" onclick="App.go('tasbih')"><span class="sb-icon">🔢</span> المسبحة</button>
+    <button class="sb-item" data-focus data-nav="names99" onclick="App.go('names99')"><span class="sb-icon">🌟</span> الأسماء</button>
+    <button class="sb-item" data-focus data-nav="calendar" onclick="App.go('calendar')"><span class="sb-icon">📅</span> التقويم</button>
+    <button class="sb-item" data-focus data-nav="contact" onclick="App.go('contact')"><span class="sb-icon">📞</span> اتصل بنا</button>
+    <button class="sb-item" data-focus data-nav="settings" onclick="App.go('settings')"><span class="sb-icon">⚙️</span> الإعدادات</button>
+  </nav>
+
+  <header class="app-header">
+    <div class="h-right">
+      <div class="brand-block">
+        <span class="brand">🕌 خُشوع</span>
+        <span class="brand-sub">آمنة • مهاب</span>
+      </div>
+    </div>
+    <div class="h-center">
+      <div class="hijri-date" id="hijriDate">—</div>
+      <div class="greg-date" id="gregDate">—</div>
+    </div>
+    <div class="h-left">
+      <button class="icon-btn" data-focus onclick="Bookmark.showMenu()" title="مواضع القراءة">🔖</button>
+      <button class="icon-btn" data-focus onclick="App.toggleTheme()" title="الوضع الليلي">🌓</button>
+    </div>
+  </header>
+
+  <div class="ticker">
+    <div class="ticker-label">📜 نور</div>
+    <div class="ticker-track">
+      <div class="ticker-content" id="tickerContent"></div>
+    </div>
+  </div>
+
+  <main class="main">
+
+    <section class="page active" data-page="home">
+      <div class="next-prayer">
+        <div class="np-top">
+          <div>
+            <div class="np-label">الصلاة القادمة</div>
+            <div class="np-name" id="nextPrayerName">—</div>
+          </div>
+          <div class="np-countdown" id="nextPrayerCountdown">--:--:--</div>
+        </div>
+        <div class="np-times" id="prayerTimesRow"></div>
+      </div>
+
+      <div class="grid-menu">
+        <button class="tile" data-focus onclick="App.go('quran')"><span class="tile-icon">📖</span><span class="tile-label">قرآن للحفظ</span></button>
+        <button class="tile" data-focus onclick="App.go('quran-listen')"><span class="tile-icon">🎧</span><span class="tile-label">قرآن للاستماع</span></button>
+        <button class="tile" data-focus onclick="App.go('mushaf')"><span class="tile-icon">📚</span><span class="tile-label">مصحف للقراءة</span></button>
+        <button class="tile" data-focus onclick="App.go('prayer')"><span class="tile-icon">🕌</span><span class="tile-label">الصلاة</span></button>
+        <button class="tile" data-focus onclick="App.go('qibla')"><span class="tile-icon">🧭</span><span class="tile-label">القبلة</span></button>
+        <button class="tile" data-focus onclick="App.go('adhkar')"><span class="tile-icon">📿</span><span class="tile-label">الأذكار الموسعة</span></button>
+        <button class="tile" data-focus onclick="App.go('library')"><span class="tile-icon">📚</span><span class="tile-label">حصن المسلم والمكتبة</span></button>
+        <button class="tile" data-focus onclick="App.go('seerah')"><span class="tile-icon">🌙</span><span class="tile-label">السيرة النبوية</span></button>
+        <button class="tile" data-focus onclick="App.go('tasbih')"><span class="tile-icon">🔢</span><span class="tile-label">المسبحة</span></button>
+        <button class="tile" data-focus onclick="App.go('names99')"><span class="tile-icon">🌟</span><span class="tile-label">الأسماء</span></button>
+        <button class="tile" data-focus onclick="App.go('calendar')"><span class="tile-icon">📅</span><span class="tile-label">التقويم</span></button>
+        <button class="tile" data-focus onclick="QRShare.showQR()"><span class="tile-icon">📤</span><span class="tile-label">مشاركة</span></button>
+        <button class="tile" data-focus onclick="UnifiedSearch.openSearchDialog()"><span class="tile-icon">🔍</span><span class="tile-label">بحث شامل</span></button>
+        <button class="tile" data-focus onclick="App.go('contact')"><span class="tile-icon">📞</span><span class="tile-label">اتصل بنا</span></button>
+      </div>
+
+      <div class="card">
+        <div class="aod-label">🌅 آية اليوم</div>
+        <div class="aod-text" id="aodText">—</div>
+        <div class="aod-ref" id="aodRef">—</div>
+      </div>
+    </section>
+
+    <section class="page" data-page="quran">
+      <div class="page-head">
+        <button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button>
+        <h2>📖 قرآن للحفظ</h2>
+        <button class="icon-btn" data-focus onclick="Quran.openReciters()" style="background:var(--surface-2);color:var(--primary)">🎙️</button>
+      </div>
+
+      <div class="reciter-pill" data-focus onclick="Quran.openReciters()">
+        <span>القارئ الحالي:</span><strong id="currentReciter">سعد الغامدي</strong>
+      </div>
+
+      <div id="quranSurahView" class="quran-view hidden">
+        <div class="surah-header">
+          <button class="icon-btn" data-focus onclick="Quran.backToList()">←</button>
+          <div class="surah-title-block">
+            <div class="surah-title" id="surahTitle">—</div>
+            <div class="surah-sub" id="surahSub">—</div>
+          </div>
+          <button class="icon-btn" data-focus onclick="Quran.playFrom(1)">▶</button>
+        </div>
+
+        <div class="surah-toolbar">
+          <button class="tb-btn" data-focus onclick="Quran.playPause()" id="btnPlayPause">▶ تشغيل</button>
+          <button class="tb-btn" data-focus onclick="Quran.prevAyah()">⏮ السابقة</button>
+          <button class="tb-btn" data-focus onclick="Quran.nextAyah()">⏭ التالية</button>
+          <button class="tb-btn" data-focus id="repeatBtn" onclick="Quran.cycleRepeat()">🔁 لا تكرار</button>
+        </div>
+
+        <div class="surah-content" id="surahContent">
+          <div style="text-align:center;padding:30px;color:var(--muted)">جارٍ التحميل...</div>
+        </div>
+
+        <div class="surah-nav">
+          <button class="btn-secondary" data-focus onclick="Quran.goSurah(-1)">← السابقة</button>
+          <button class="btn-secondary" data-focus onclick="Quran.goSurah(1)">التالية →</button>
+        </div>
+      </div>
+
+      <div id="quranListView">
+        <div class="list-head">
+          <input type="text" id="surahSearch" placeholder="🔍 ابحث عن سورة..." oninput="Quran.filterList(this.value)">
+        </div>
+        <div id="surahList" class="surah-list"></div>
+      </div>
+    </section>
+
+    <section class="page" data-page="quran-listen">
+      <div class="page-head">
+        <button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button>
+        <h2>🎧 قرآن للاستماع</h2>
+        <button class="icon-btn" data-focus onclick="QuranListen.openReciters()" style="background:var(--surface-2);color:var(--primary)">🎙️</button>
+      </div>
+
+      <div class="reciter-pill" data-focus onclick="QuranListen.openReciters()">
+        <span>القارئ الحالي:</span><strong id="currentListenReciter">مشاري العفاسي</strong>
+      </div>
+
+      <div class="card" style="background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff">
+        <div class="lp-current">
+          <div class="lp-icon">🎧</div>
+          <div style="flex:1">
+            <div class="lp-title" id="lpTitle">اختر سورة للاستماع</div>
+            <div class="lp-sub" id="lpSub">—</div>
+          </div>
+        </div>
+
+        <div class="lp-progress">
+          <div class="lp-bar" id="lpBar" onclick="QuranListen.seek(event)">
+            <div class="lp-fill" id="lpFill"></div>
+          </div>
+          <div class="lp-times">
+            <span id="lpCur">0:00</span>
+            <span id="lpDur">0:00</span>
+          </div>
+        </div>
+
+        <div class="lp-controls">
+          <button data-focus onclick="QuranListen.prev()">⏮</button>
+          <button class="lp-play" id="lpPlayBtn" data-focus onclick="QuranListen.playPause()">▶</button>
+          <button data-focus onclick="QuranListen.next()">⏭</button>
+        </div>
+
+        <div style="display:flex;justify-content:center;gap:10px;margin-top:12px;flex-wrap:wrap">
+          <button class="tb-btn" id="lpContBtn" data-focus onclick="QuranListen.toggleContinuous()">🔁 متتالي: نعم</button>
+          <button class="tb-btn" id="lpRepeatBtn" data-focus onclick="QuranListen.toggleRepeatSurah()">🔂 تكرار: لا</button>
+          <button class="tb-btn" data-focus onclick="SleepTimer.openMenu()">⏰ النوم</button>
+        </div>
+
+        <audio id="listenAudio" preload="auto"></audio>
+      </div>
+
+      <div class="list-head">
+        <input type="text" id="listenSearch" placeholder="🔍 ابحث عن سورة..." oninput="QuranListen.filter(this.value)">
+      </div>
+      <div id="listenList" class="surah-list"></div>
+    </section>
+
+    <section class="page" data-page="mushaf">
+      <div class="page-head">
+        <button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button>
+        <h2>📚 مصحف للقراءة</h2>
+        <div style="display:flex;gap:6px"><button class="btn-secondary" data-focus onclick="ReaderMode.openMushaf()" style="padding:8px 10px">⛶ ملء الشاشة</button><button class="icon-btn" data-focus onclick="Mushaf.openMenu()" style="background:var(--surface-2);color:var(--primary)">📖</button></div>
+      </div>
+
+      <div class="card" style="padding:10px">
+        <div class="mushaf-controls" id="mushafControls"></div>
+      </div>
+
+      <div class="card" style="padding:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:6px">
+          <button class="btn-secondary" data-focus onclick="Mushaf.prev()" style="flex:0 0 auto;padding:10px 14px">‹ السابقة</button>
+          <div id="mushafTitle" style="font-family:'Reem Kufi',serif;font-size:16px;color:var(--primary);font-weight:700;flex:1;text-align:center">—</div>
+          <button class="btn-secondary" data-focus onclick="Mushaf.next()" style="flex:0 0 auto;padding:10px 14px">التالية ›</button>
+        </div>
+      </div>
+
+      <div class="mushaf-view" id="mushafView">
+        <div style="text-align:center;padding:30px;color:var(--muted)">📖 جارٍ التحميل...</div>
+      </div>
+    </section>
+
+    <section class="page" data-page="prayer">
+      <div class="page-head">
+        <button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button>
+        <h2>🕌 مواقيت الصلاة</h2>
+        <button class="icon-btn" data-focus onclick="Prayer.locate()" style="background:var(--surface-2);color:var(--primary)">📍</button>
+      </div>
+
+      <div class="card">
+        <div class="prayer-loc">
+          <span>📍 <strong id="prayerLoc">—</strong></span>
+          <button class="loc-change" data-focus onclick="Prayer.openCityPicker()">تغيير</button>
+        </div>
+        <div class="prayer-list" id="prayerList"></div>
+      </div>
+
+      <div class="card">
+        <h3>إعدادات الحساب</h3>
+        <label class="lbl">طريقة الحساب</label>
+        <button class="btn-secondary" data-focus id="prayerMethodBtn"
+          style="width:100%;text-align:right;justify-content:space-between;display:flex;align-items:center;margin-bottom:10px"
+          onclick="Prayer.openMethodPicker()">
+          <span id="prayerMethodLabel">رابطة العالم الإسلامي</span>
+          <span>▾</span>
+        </button>
+
+        <label class="lbl">مذهب العصر</label>
+        <button class="btn-secondary" data-focus id="prayerMadhabBtn"
+          style="width:100%;text-align:right;justify-content:space-between;display:flex;align-items:center;margin-bottom:10px"
+          onclick="Prayer.openMadhabPicker()">
+          <span id="prayerMadhabLabel">الشافعي / المالكي / الحنبلي</span>
+          <span>▾</span>
+        </button>
+
+        <button class="btn-primary" data-focus style="margin-top:12px" onclick="Prayer.locate()">
+          📡 تحديد موقعي تلقائيًا (GPS)
+        </button>
+        <button class="btn-secondary" data-focus style="width:100%;margin-top:8px" onclick="Prayer.openCityPicker()">
+          🏙️ اختيار المدينة يدويًا
+        </button>
+      </div>
+    </section>
+
+    <section class="page" data-page="qibla">
+      <div class="page-head">
+        <button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button>
+        <h2>🧭 القبلة</h2>
+        <span style="width:38px"></span>
+      </div>
+
+      <div class="card qibla-card">
+        <div class="qibla-info">
+          <div>اتجاه القبلة<strong id="qiblaDeg">—</strong></div>
+          <div>اتجاه الهاتف<strong id="headingDeg">—</strong></div>
+          <div>الفرق<strong id="qiblaDiff">—</strong></div>
+        </div>
+
+        <div class="compass">
+          <div class="compass-ring" id="compassRing">
+            <div class="compass-n">N</div>
+            <div class="compass-e">E</div>
+            <div class="compass-s">S</div>
+            <div class="compass-w">W</div>
+            <div class="compass-needle" id="compassNeedle">
+              <div class="needle-kaaba">🕋</div>
+            </div>
+            <div class="compass-center"></div>
+          </div>
+        </div>
+
+        <button class="btn-primary" data-focus onclick="Qibla.enable()">📡 تشغيل البوصلة</button>
+        <button class="btn-secondary" data-focus style="width:100%;margin-top:8px" onclick="Qibla.openFullScreen()">
+          🔍 فتح البوصلة الكاملة
+        </button>
+
+        <div class="qibla-accuracy hidden" id="qiblaAccuracy"></div>
+      </div>
+    </section>
+
+    <section class="page" data-page="adhkar">
+      <div class="page-head">
+        <button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button>
+        <h2>📿 الأذكار</h2>
+        <span style="width:38px"></span>
+      </div>
+
+      <div class="adhkar-cats" id="adhkarCats"></div>
+      <div class="adhkar-list" id="adhkarList"></div>
+    </section>
+
+    <section class="page" data-page="library">
+      <div class="page-head"><button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button><h2>📚 المكتبة الإسلامية</h2><span style="width:38px"></span></div>
+      <div class="library-hero"><div class="library-hero-icon">📖</div><div><h3>زاد المسلم اليومي</h3><p>أدعية مختارة، أبواب متنوعة، وقراءة مريحة دون الحاجة إلى الاتصال بالإنترنت.</p></div></div>
+      <div class="library-search"><input id="librarySearch" type="search" placeholder="ابحث في الأدعية والأبواب…" aria-label="ابحث في المكتبة" oninput="IslamicLibrary.search(this.value)"></div>
+      <div class="library-categories" id="libraryCategories"></div>
+      <div class="library-list" id="libraryList"></div>
+      <p class="library-note">تنبيه: هذه مجموعة مختارة وليست نقلًا كاملًا لكتاب حصن المسلم. يُرجى مراجعة مصادر الحديث المعتمدة عند الحاجة إلى التخريج التفصيلي.</p>
+    </section>
+
+    <section class="page" data-page="seerah">
+      <div class="page-head"><button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button><h2>🌙 السيرة النبوية</h2><span style="width:38px"></span></div>
+      <div class="seerah-hero"><span>ﷺ</span><h3>سيرة النبي محمد ﷺ</h3><p>محطات من السيرة مرتبة زمنيًا، مع تمييز الروايات المشهورة والتنبيه إلى اختلاف بعض التواريخ.</p></div>
+      <div class="library-search"><input id="seerahSearch" type="search" placeholder="ابحث في أحداث السيرة…" aria-label="ابحث في السيرة" oninput="IslamicLibrary.searchSeerah(this.value)"></div>
+      <div class="seerah-timeline" id="seerahTimeline"></div>
+    </section>
+
+    <section class="page" data-page="tasbih">
+      <div class="page-head">
+        <button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button>
+        <h2>🔢 المسبحة</h2>
+        <span style="width:38px"></span>
+      </div>
+
+      <div class="card tasbih-card">
+        <div class="tasbih-dhikr" id="tasbihDhikr">سُبْحَانَ اللَّهِ</div>
+        <div class="tasbih-count" id="tasbihCount">0</div>
+        <div class="tasbih-target" id="tasbihTarget">الهدف: 33</div>
+
+        <button class="tasbih-main-btn" data-focus onclick="Tasbih.tap()">اضغط</button>
+
+        <div class="tasbih-actions">
+          <button class="btn-secondary" data-focus onclick="Tasbih.reset()">تصفير</button>
+          <button class="btn-secondary" data-focus onclick="Tasbih.changeDhikr()">تغيير الذكر</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" data-page="names99">
+      <div class="page-head">
+        <button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button>
+        <h2>🌟 أسماء الله</h2>
+        <span style="width:38px"></span>
+      </div>
+
+      <div class="names-grid" id="namesGrid"></div>
+    </section>
+
+    <section class="page" data-page="calendar">
+      <div class="page-head">
+        <button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button>
+        <h2>📅 التقويم</h2>
+        <span style="width:38px"></span>
+      </div>
+
+      <div class="card">
+        <div class="cal-head">
+          <button class="icon-btn" data-focus onclick="Calendar.prev()" style="background:var(--surface-2);color:var(--primary)">‹</button>
+          <div class="cal-title" id="calTitle">—</div>
+          <button class="icon-btn" data-focus onclick="Calendar.next()" style="background:var(--surface-2);color:var(--primary)">›</button>
+        </div>
+
+        <div class="cal-weekdays">
+          <span>أحد</span><span>إث</span><span>ثلا</span><span>أرب</span><span>خمي</span><span>جمع</span><span>سبت</span>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+      </div>
+
+      <div class="card">
+        <h3>المناسبات الإسلامية</h3>
+        <div class="events-list" id="eventsList"></div>
+      </div>
+    </section>
+
+    <section class="page" data-page="contact">
+      <div class="page-head">
+        <button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button>
+        <h2>📞 اتصل بنا</h2>
+        <span style="width:38px"></span>
+      </div>
+
+      <div class="dedication-box">
+        <div class="dedication-title">إهــداء</div>
+        <div class="dedication-line">إلى فلذتَي كبدي</div>
+        <div class="dedication-names">آمنة • مهاب</div>
+        <div class="dedication-line">وإلى والدتي الغالية</div>
+        <div class="dedication-line" style="font-size:14px;color:var(--muted)">حفظها الله ورعاها</div>
+        <div class="dedication-line" style="margin-top:16px;padding-top:14px;border-top:1px dashed var(--gold)">
+          وصدقة جارية على أخي المتوفى
+        </div>
+        <div class="dedication-names" style="font-size:22px;color:var(--gold)">عيسى عبد القادر</div>
+        <div class="dedication-line" style="font-size:13px;color:var(--muted)">رحمه الله وغفر له وأسكنه فسيح جناته</div>
+        <div class="dedication-ar">﴿ رَبَّنَا تَقَبَّلْ مِنَّا إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ ﴾</div>
+      </div>
+
+      <div class="card">
+        <div class="prayer-request">
+          <strong>🤲 دعوة صادقة</strong>
+          إن استفدتَ من هذا التطبيق، فلا تنسَ أن تدعو لـ <b>آمنة</b> و<b>مهاب</b> ووالدتهم، ولجميع المسلمين.<br>
+          <span style="color:var(--gold);font-weight:700">« جزى الله من دعا لنا خيرًا »</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>📬 تواصل معنا</h3>
+        <a href="mailto:aissaallel@gmail.com" class="contact-item" data-focus>
+          <span class="contact-icon">📧</span>
+          <span class="contact-info">
+            <strong>البريد الإلكتروني</strong>
+            <span>aissaallel@gmail.com</span>
+          </span>
+        </a>
+        <a href="tel:0776117083" class="contact-item" data-focus>
+          <span class="contact-icon">📱</span>
+          <span class="contact-info">
+            <strong>الهاتف</strong>
+            <span>0776117083</span>
+          </span>
+        </a>
+        <a href="https://wa.me/213776117083" target="_blank" rel="noopener" class="contact-item" data-focus>
+          <span class="contact-icon">🟢</span>
+          <span class="contact-info">
+            <strong>واتساب</strong>
+            <span>0776117083</span>
+          </span>
+        </a>
+        <a href="https://www.facebook.com/abad.aissa.1" target="_blank" rel="noopener" class="contact-item" data-focus>
+          <span class="contact-icon">🔵</span>
+          <span class="contact-info">
+            <strong>فيسبوك</strong>
+            <span>@abad.aissa.1</span>
+          </span>
+        </a>
+        <a href="https://www.instagram.com/abad_aissa/" target="_blank" rel="noopener" class="contact-item" data-focus>
+          <span class="contact-icon">📸</span>
+          <span class="contact-info">
+            <strong>إنستغرام</strong>
+            <span>abad_aissa</span>
+          </span>
+        </a>
+        <div style="margin-top:14px;padding:12px;border-radius:12px;background:var(--surface-2);color:var(--muted);font-size:13px;text-align:center">
+          <strong style="color:var(--primary)">تيارت</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" data-page="settings">
+      <div class="page-head">
+        <button class="icon-btn" data-focus onclick="App.go('home')" style="background:var(--surface-2);color:var(--primary)">←</button>
+        <h2>⚙️ الإعدادات</h2>
+        <span style="width:38px"></span>
+      </div>
+
+      <div class="card">
+        <h3>🔊 إعدادات الأذان</h3>
+
+        <button class="adhan-toggle-btn on" id="adhanToggleBtn" data-focus onclick="Adhan.toggleEnabled()">
+          <div class="atb-left">
+            <span class="atb-icon" id="adhanToggleIcon">🔔</span>
+            <span class="atb-label">الأذان</span>
+          </div>
+          <span class="atb-status" id="adhanToggleStatus">مفعّل ✅</span>
+        </button>
+
+        <label class="lbl">حجم صوت الأذان</label>
+        <div class="volume-slider-wrap">
+          <span class="vol-icon" id="volIcon">🔊</span>
+          <input type="range" id="adhanVolume" min="0" max="100" value="80" step="5"
+            data-focus oninput="Adhan.setVolume(this.value)">
+          <span class="volume-value" id="volumeValue">80%</span>
+        </div>
+
+        <label class="lbl">اختيار الأذان للصلوات العادية</label>
+        <div id="adhanChoices"></div>
+
+        <div style="display:flex;gap:8px;margin-top:10px">
+          <button class="btn-secondary" id="btnTestAdhan" data-focus style="flex:1" onclick="Adhan.testAdhan()">
+            🔊 تجربة الأذان
+          </button>
+          <button class="btn-secondary" data-focus style="flex:1" onclick="Adhan.stopTest()">
+            ⏹ إيقاف
+          </button>
+        </div>
+
+        <h3 style="margin-top:18px">🕌 وضع كل صلاة</h3>
+        <div id="perPrayerList"></div>
+
+        <h3 style="margin-top:18px">⏰ تنبيه قبل الأذان</h3>
+        <div class="pre-notice-row">
+          <span>التنبيه المبكر</span>
+          <button class="btn-secondary" data-focus id="preAdhanBtn"
+            style="width:auto;padding:8px 14px" onclick="Adhan.openPreMinutePicker()">
+            <span id="preAdhanLabel">بدون</span> ▾
+          </button>
+        </div>
+
+        <div class="adhan-row" style="margin-top:8px">
+          <span class="pr-name">📢 اختبار جدولة الإشعارات</span>
+          <button class="btn-secondary" data-focus style="width:auto;padding:6px 12px"
+            onclick="Adhan.testSchedule()">
+            جدولة (بعد دقيقة)
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🔔 الإشعارات</h3>
+
+        <div class="adhan-row">
+          <span class="pr-name">
+            إشعارات النظام
+            <span class="notif-badge notif-off" id="notifStatusBadge">معطلة</span>
+          </span>
+          <button class="btn-secondary" data-focus style="width:auto;padding:6px 12px"
+            onclick="Notifier.requestPermission()">
+            تفعيل
+          </button>
+        </div>
+
+        <button class="btn-secondary" data-focus style="width:100%;margin-top:8px"
+          onclick="Notifier.openExactAlarmSettings()">
+          ⏰ ضبط دقة مواعيد الأذان
+        </button>
+
+        <div class="adhan-row">
+          <span class="pr-name">📅 تنبيه المناسبات الإسلامية</span>
+          <input type="checkbox" id="eventsNotif" data-focus
+            onchange="Notifier.toggleEvents(this.checked)">
+        </div>
+
+        <h3 style="margin-top:18px">🕌 الإشعارات الإسلامية اليومية</h3>
+        <div class="adhan-row">
+          <span class="pr-name">تفعيل الإشعارات اليومية</span>
+          <input type="checkbox" id="islamicNotifEnabled" data-focus
+            onchange="IslamicNotifications.enable(this.checked)">
+        </div>
+        <div id="islamicNotifList"></div>
+      </div>
+
+      <div class="card">
+        <h3>🎨 المظهر</h3>
+        <div class="switch-row">
+          <span>الوضع الليلي</span>
+          <input type="checkbox" id="setDark" data-focus onchange="Settings.setDark(this.checked)">
+        </div>
+        <label class="lbl">حجم خط القرآن</label>
+        <input type="range" id="setQuranFont" min="20" max="42" value="28"
+          data-focus oninput="Settings.setQuranFont(this.value)">
+      </div>
+
+      <div class="card">
+        <h3>📖 القرآن</h3>
+
+        <label class="lbl">القارئ الافتراضي (للحفظ)</label>
+        <button class="btn-secondary" data-focus id="setReciterBtn"
+          style="width:100%;text-align:right;justify-content:space-between;display:flex;align-items:center;margin-bottom:10px"
+          onclick="Quran.openReciterPicker()">
+          <span id="setReciterLabel">سعد الغامدي</span>
+          <span>▾</span>
+        </button>
+
+        <label class="lbl">تكرار الآية</label>
+        <button class="btn-secondary" data-focus id="setRepeatBtn"
+          style="width:100%;text-align:right;justify-content:space-between;display:flex;align-items:center"
+          onclick="Quran.openRepeatPicker()">
+          <span id="setRepeatLabel">بدون تكرار</span>
+          <span>▾</span>
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>📱 الجهاز</h3>
+        <label class="lbl">نوع الواجهة</label>
+        <button class="btn-secondary" data-focus id="deviceSelectBtn"
+          style="width:100%;text-align:right;justify-content:space-between;display:flex;align-items:center"
+          onclick="Setup.openDevicePicker()">
+          <span id="deviceSelectLabel">📱 هاتف / تابلت</span>
+          <span>▾</span>
+        </button>
+      </div>
+
+      <div class="card" style="text-align:center">
+        <h3>حول التطبيق</h3>
+        <div style="font-size:50px;margin:10px 0">🕌</div>
+        <div style="font-family:'Reem Kufi',serif;font-size:28px;color:var(--primary);letter-spacing:4px;font-weight:800">
+          خُشوع
+        </div>
+        <div style="color:var(--gold);font-size:14px;margin:8px 0;letter-spacing:3px">
+          آمنة • مهاب
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" id="bottomNav">
+    <button data-focus data-nav="home" onclick="App.go('home')">🏠</button>
+    <button data-focus data-nav="quran" onclick="App.go('quran')">📖</button>
+    <button data-focus data-nav="quran-listen" onclick="App.go('quran-listen')">🎧</button>
+    <button data-focus data-nav="prayer" onclick="App.go('prayer')">🕌</button>
+    <button data-focus data-nav="settings" onclick="App.go('settings')">⚙️</button>
+  </nav>
+</div>
+
+<div id="qiblaFull" class="qibla-full hidden">
+  <button class="qibla-full-close" data-focus onclick="Qibla.closeFullScreen()">✕</button>
+  <div class="qibla-full-header">🕋 اتجاه القبلة</div>
+  <div class="qibla-full-sub" id="qiblaFullCity">—</div>
+
+  <div class="qibla-full-compass">
+    <div class="qibla-full-ring" id="qiblaFullRing">
+      <div class="qibla-cardinal n">N</div>
+      <div class="qibla-cardinal e">E</div>
+      <div class="qibla-cardinal s">S</div>
+      <div class="qibla-cardinal w">W</div>
+      <div class="qibla-full-needle" id="qiblaFullNeedle">
+        <div class="qibla-kaaba-icon">🕋</div>
+      </div>
+      <div class="qibla-full-center"></div>
+    </div>
+  </div>
+
+  <div class="qibla-full-deg" id="qiblaFullDeg">—</div>
+  <div class="qibla-full-status" id="qiblaFullStatus">—</div>
+  <button class="qibla-full-btn" data-focus onclick="Qibla.closeFullScreen()">إغلاق</button>
+</div>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-content" id="modalContent"></div>
+</div>
+<div id="toast" class="toast"></div>
+
+<audio id="ayahAudio" preload="auto"></audio>
+<audio id="adhanAudio" preload="auto"></audio>
+<audio id="duaAudio" preload="auto"></audio>
+
+<script src="js/utils.js"></script>
+<script src="js/data.js"></script>
+<script src="js/loading.js"></script>
+<script src="js/sleep-timer.js"></script>
+<script src="js/qr-share.js"></script>
+<script src="js/mushaf-controls.js"></script>
+<script src="js/setup.js"></script>
+<script src="js/focus.js"></script>
+<script src="js/notifications.js"></script>
+<script src="js/prayer.js"></script>
+<script src="js/adhan.js"></script>
+<script src="js/quran-offline.js"></script>
+<script src="js/quran.js"></script>
+<script src="js/mushaf.js"></script>
+<script src="js/bookmark.js"></script>
+<script src="js/qibla.js"></script>
+<script src="js/adhkar.js"></script>
+<script src="js/islamic-library.js"></script>
+<script src="js/reader-mode.js"></script>
+<script src="js/tasbih.js"></script>
+<script src="js/names99.js"></script>
+<script src="js/calendar.js"></script>
+<script src="js/ticker.js"></script>
+<script src="js/unified-search.js"></script>
+<script src="js/islamic-notifications.js"></script>
+<script src="js/app.js"></script>
+</body>
+  </html>

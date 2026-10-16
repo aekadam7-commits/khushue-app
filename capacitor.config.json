@@ -1,0 +1,16 @@
+{
+  "appId": "com.khushu.app",
+  "appName": "خُشوع",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_adhan",
+      "iconColor": "#c9a961",
+      "sound": "adhan1"
+    }
+  }
+}
