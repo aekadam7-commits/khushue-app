@@ -1,6 +1,6 @@
 const QRShare = {
   getAppUrl(){
-    return 'https://github.com/aekadam7-commits/khushu-app/releases/latest/download/khushu.apk';
+    return 'https://github.com/aekadam7-commits/khushue-app/releases/latest/download/khushue.apk';
   },
   
   async shareApp(){
