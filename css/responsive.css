@@ -1,0 +1,328 @@
+/* ============================================================
+   خُشوع — responsive.css
+   تصميم متجاوب للهواتف والأجهزة الصغيرة
+   ============================================================ */
+
+/* ============ Tablets (768px) ============ */
+@media (max-width:768px){
+  .app{padding:10px 10px 0}
+  .main{padding:12px}
+  
+  .grid-menu{grid-template-columns:repeat(3,1fr);gap:10px}
+  .names-grid{grid-template-columns:repeat(2,1fr)}
+  
+  .next-prayer{padding:16px}
+  .np-name{font-size:24px}
+  .np-countdown{font-size:20px;padding:6px 10px}
+  
+  .ticker{margin:10px 12px 14px;padding:12px 14px;min-height:80px}
+  .ticker-label{font-size:14px;padding:10px 12px}
+  .ticker-item{font-size:14px;padding:0 18px;line-height:44px}
+  .ticker-track{height:44px}
+}
+
+/* ============ Phones (520px) ============ */
+@media (max-width:520px){
+  .app{padding:10px 10px 0}
+  
+  /* Header */
+  .app-header{padding:10px 12px}
+  .brand{font-size:17px}
+  .brand-sub{font-size:9px}
+  .hijri-date{font-size:14px}
+  .greg-date{font-size:10px}
+  .icon-btn{width:38px;height:38px;font-size:17px}
+  
+  /* Grid menu */
+  .grid-menu{grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+  .tile{padding:14px 6px;border-radius:16px}
+  .tile-icon{font-size:28px}
+  .tile-label{font-size:10.5px;font-weight:700}
+  
+  /* Next prayer */
+  .next-prayer{padding:14px;border-radius:16px}
+  .np-label{font-size:11px}
+  .np-name{font-size:22px}
+  .np-countdown{font-size:18px;padding:5px 10px}
+  .np-times{gap:4px}
+  .np-time{font-size:10px;padding:7px 3px}
+  .np-time b{font-size:11px}
+  
+  /* Ticker */
+  .ticker{margin:9px 11px 12px;min-height:76px;padding:11px 13px;border-radius:16px;gap:9px}
+  .ticker-label{font-size:13px;padding:9px 11px;border-radius:10px}
+  .ticker-track{height:42px}
+  .ticker-item{font-size:13.5px;padding:0 16px;line-height:42px}
+  .ticker-item .t-ico{font-size:13px}
+  .ticker-item .t-src{font-size:10px}
+  
+  /* Cards */
+  .card{padding:14px;border-radius:16px;margin-bottom:12px}
+  .card h3{font-size:14px;margin-bottom:10px}
+  
+  /* Page head */
+  .page-head{margin-bottom:12px}
+  .page-head h2{font-size:18px}
+  
+  /* Surah items */
+  .surah-item{padding:12px;gap:10px}
+  .surah-num{width:42px;height:42px;font-size:15px}
+  .surah-name{font-size:14px}
+  .surah-meta{font-size:10px}
+  
+  /* Prayer rows */
+  .prayer-row{padding:12px}
+  .prayer-name{font-size:14px}
+  .prayer-time{font-size:16px}
+  .prayer-loc{padding:10px;font-size:12px}
+  .prayer-loc .loc-change{padding:5px 10px;font-size:11px}
+  
+  /* Tasbih */
+  .tasbih-card{padding:24px 16px}
+  .tasbih-dhikr{font-size:24px}
+  .tasbih-count{font-size:72px}
+  .tasbih-main-btn{width:190px;height:190px;font-size:19px}
+  
+  /* Names */
+  .names-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .name-card{padding:14px}
+  .name-ar{font-size:20px}
+  
+  /* Mushaf */
+  .mushaf-view{padding:18px 14px;border-radius:16px}
+  .mushaf-text{font-size:22px;line-height:2.3}
+  .mushaf-num{font-size:18px}
+  .mushaf-header{font-size:18px}
+  .mushaf-bismillah{font-size:24px}
+  .mushaf-surah-sep{font-size:18px;padding:10px}
+  
+  /* Quran */
+  .ayah-text{font-size:var(--quran-fs,26px)}
+  .ayah-num{width:30px;height:30px;font-size:12px}
+  .bismillah{font-size:24px;padding:14px 0}
+  .surah-title{font-size:17px}
+  .tb-btn{padding:8px 12px;font-size:12px}
+  
+  /* Qibla */
+  .compass{width:230px;height:230px}
+  .qibla-full-compass{width:min(88vw,300px);height:min(88vw,300px)}
+  .qibla-full-header{font-size:20px}
+  .qibla-full-deg{font-size:28px}
+  .qibla-full-status{font-size:14px}
+  .qibla-kaaba-icon{font-size:52px;margin-top:24px}
+  .qibla-cardinal{font-size:20px}
+  .qibla-full-close{width:40px;height:40px;font-size:18px}
+  .qibla-full-btn{padding:12px 22px;font-size:14px}
+  
+  /* Setup screen */
+  .setup-box{padding:28px 20px;border-radius:22px}
+  .setup-icon{font-size:52px}
+  .setup-box h1{font-size:32px;letter-spacing:3px}
+  .setup-box .subtitle{font-size:13px;margin-bottom:20px}
+  .setup-box p{font-size:13px;margin-bottom:20px}
+  .setup-choices{gap:12px;margin-bottom:18px}
+  .setup-choice{padding:20px 12px;border-radius:16px}
+  .setup-choice .icon{font-size:38px;margin-bottom:8px}
+  .setup-choice .name{font-size:15px}
+  .setup-choice .desc{font-size:11px}
+  .setup-note{font-size:11px}
+  
+  /* Permissions */
+  .permissions-box{padding:24px 18px;border-radius:22px}
+  .perm-icon{font-size:50px}
+  .permissions-box h2{font-size:24px}
+  .permissions-box>p{font-size:13px;margin-bottom:20px}
+  .perm-card{padding:12px;gap:10px;border-radius:14px;margin-bottom:12px}
+  .perm-card-icon{font-size:28px;width:42px}
+  .perm-card-info strong{font-size:14px;margin-bottom:3px}
+  .perm-card-info span{font-size:11px}
+  .perm-btn{padding:10px 14px;font-size:12px;border-radius:10px}
+  .perm-continue{padding:14px;font-size:14px;border-radius:14px;margin-top:12px}
+  .perm-note{font-size:11px;margin-top:10px}
+  
+  /* Splash */
+  .splash-icon{font-size:70px}
+  .splash h1{font-size:44px;letter-spacing:5px}
+  .splash-kids{font-size:19px;letter-spacing:3px}
+  .splash-ar{font-size:16px;margin-bottom:24px}
+  .splash .loader{width:44px;height:44px}
+  .splash-divider{width:80px;margin:14px auto}
+  
+  /* Adhan screen */
+  .adhan-screen-icon{font-size:70px}
+  .adhan-screen-title{font-size:24px;letter-spacing:3px}
+  .adhan-screen-sub{font-size:14px;margin-bottom:22px}
+  .adhan-screen-time{font-size:13px;padding:8px 16px;margin-bottom:22px}
+  .adhan-words{padding:20px 16px;border-radius:18px;margin-bottom:22px}
+  .adhan-words p{font-size:18px;line-height:2.1;margin-bottom:12px}
+  .adhan-words .highlight{font-size:20px}
+  .adhan-screen-actions{gap:10px}
+  .adhan-screen-btn{padding:14px;font-size:15px;border-radius:14px}
+  .adhan-screen-hint{font-size:11px;margin-top:16px}
+  
+  /* Dua screen */
+  .dua-screen-icon{font-size:60px}
+  .dua-screen-title{font-size:22px;letter-spacing:3px}
+  .dua-screen-sub{font-size:12px;margin-bottom:22px}
+  .dua-text-wrap{padding:22px 16px;border-radius:18px;margin-bottom:20px}
+  .dua-text-wrap p{font-size:19px;line-height:2.2;margin-bottom:10px}
+  .dua-text-wrap .dua-highlight{font-size:21px;margin:14px 0}
+  .dua-screen-btn{padding:13px 22px;font-size:14px;border-radius:14px}
+  
+  /* Settings */
+  .adhan-toggle-btn{padding:14px;border-radius:14px}
+  .adhan-toggle-btn .atb-icon{font-size:24px}
+  .adhan-toggle-btn .atb-label{font-size:14px}
+  .adhan-toggle-btn .atb-status{padding:6px 12px;font-size:11px;border-radius:16px}
+  .volume-slider-wrap{padding:10px 0}
+  .volume-slider-wrap .vol-icon{font-size:20px;width:28px}
+  .volume-slider-wrap input[type=range]::-webkit-slider-thumb{width:22px;height:22px}
+  .volume-value{font-size:13px;min-width:46px}
+  
+  .audio-choice{padding:12px;border-radius:12px;margin-bottom:8px}
+  .audio-choice-info strong{font-size:14px}
+  .audio-choice-info span{font-size:11px}
+  .audio-choice-btn{width:40px;height:40px;font-size:15px}
+  
+  .prayer-mode-btn{padding:11px 6px;border-radius:12px}
+  .prayer-mode-btn .pm-ico{font-size:18px}
+  .prayer-mode-btn .pm-lbl{font-size:11px}
+  .prayer-mode-head{font-size:14px}
+  .prayer-mode-head .p-time-s{font-size:12px}
+  
+  /* Contact */
+  .contact-item{padding:12px;gap:10px;border-radius:12px}
+  .contact-icon{font-size:22px;width:34px}
+  .contact-info strong{font-size:14px}
+  .contact-info span{font-size:11px}
+  
+  /* Dedication */
+  .dedication-box{padding:22px 14px;border-radius:16px}
+  .dedication-box::before{font-size:28px;top:-16px}
+  .dedication-title{font-size:19px;letter-spacing:3px;margin-bottom:12px}
+  .dedication-names{font-size:22px;letter-spacing:2px}
+  .dedication-line{font-size:16px}
+  .dedication-ar{font-size:14px;padding-top:12px;margin-top:12px}
+  
+  /* Modal */
+  .modal{padding:12px}
+  .modal-content{padding:18px;border-radius:18px}
+  .modal-content h3{font-size:17px;margin-bottom:12px}
+  .reciter-option{padding:12px;font-size:13px;border-radius:10px;margin-bottom:6px}
+  .city-item{padding:11px 12px;font-size:13px;border-radius:10px}
+  .city-search{padding:12px;font-size:13px;border-radius:10px}
+  
+  /* Bottom nav */
+  .bottom-nav button{padding:7px;font-size:21px}
+  
+  /* Toast */
+  .toast{bottom:95px;font-size:13px;padding:11px 18px;border-radius:12px}
+  
+  /* Empty */
+  .empty-state{padding:40px 16px}
+  .empty-state .empty-ico{font-size:48px}
+  .empty-state .empty-title{font-size:15px}
+  .empty-state .empty-text{font-size:12px}
+  
+  /* Retry */
+  .retry-btn{padding:11px 20px;font-size:13px;border-radius:12px}
+  
+  /* Search */
+  .search-wrap{min-height:50px;padding:0 14px;border-radius:16px}
+  .search-wrap input{font-size:14px;padding:13px 0}
+  .search-icon{font-size:17px}
+  
+  /* Qibla accuracy */
+  .qibla-accuracy{font-size:10px;padding:4px 10px}
+  .hint{font-size:11px;margin-top:10px}
+}
+
+/* ============ Small Phones (400px) ============ */
+@media (max-width:400px){
+  .app{padding:8px 8px 0}
+  .main{padding:10px}
+  
+  .grid-menu{grid-template-columns:repeat(3,1fr);gap:7px}
+  .tile{padding:12px 4px;border-radius:14px}
+  .tile-icon{font-size:24px}
+  .tile-label{font-size:9.5px}
+  
+  .brand{font-size:16px}
+  .hijri-date{font-size:13px}
+  .greg-date{font-size:9px}
+  
+  .next-prayer{padding:12px}
+  .np-name{font-size:20px}
+  .np-countdown{font-size:16px;padding:4px 8px}
+  .np-time{padding:6px 2px;font-size:9px}
+  .np-time b{font-size:10px}
+  
+  .ticker{margin:8px 9px 10px;min-height:72px;padding:10px 11px;gap:8px}
+  .ticker-label{font-size:12px;padding:8px 10px}
+  .ticker-item{font-size:12.5px;padding:0 14px}
+  .ticker-track{height:40px}
+  .ticker-item{line-height:40px}
+  
+  .names-grid{grid-template-columns:repeat(2,1fr);gap:6px}
+  .name-card{padding:11px}
+  .name-ar{font-size:18px}
+  .name-mean{font-size:10px}
+  .name-num{font-size:10px}
+  
+  .mushaf-text{font-size:20px;line-height:2.2}
+  .mushaf-num{font-size:16px}
+  .mushaf-view{padding:16px 12px}
+  
+  .ayah-text{font-size:var(--quran-fs,24px)}
+  .ayah-num{width:26px;height:26px;font-size:11px}
+  .bismillah{font-size:22px}
+  
+  .compass{width:210px;height:210px}
+  .compass-n,.compass-e,.compass-s,.compass-w{font-size:17px}
+  .needle-kaaba{font-size:42px;margin-top:14px}
+  
+  .setup-box{padding:22px 16px}
+  .setup-icon{font-size:46px}
+  .setup-box h1{font-size:28px;letter-spacing:2px}
+  .setup-box .subtitle{font-size:12px;margin-bottom:16px}
+  .setup-box p{font-size:12px;margin-bottom:18px}
+  .setup-choice{padding:16px 10px;border-radius:14px}
+  .setup-choice .icon{font-size:32px}
+  .setup-choice .name{font-size:14px}
+  .setup-choice .desc{font-size:10px}
+  
+  .permissions-box{padding:20px 14px}
+  .perm-icon{font-size:44px}
+  .permissions-box h2{font-size:21px}
+  .perm-card{padding:10px;gap:8px}
+  .perm-card-icon{font-size:24px;width:36px}
+  .perm-card-info strong{font-size:13px}
+  .perm-card-info span{font-size:10px}
+  .perm-btn{padding:8px 12px;font-size:11px}
+  
+  .splash h1{font-size:38px}
+  .splash-kids{font-size:16px}
+  .splash-icon{font-size:60px}
+  .splash-ar{font-size:14px}
+  
+  .adhan-words p{font-size:16px}
+  .adhan-words .highlight{font-size:18px}
+  .adhan-screen-title{font-size:21px}
+  
+  .dua-text-wrap p{font-size:17px}
+  .dua-text-wrap .dua-highlight{font-size:19px}
+  
+  .tasbih-main-btn{width:170px;height:170px;font-size:17px}
+  .tasbih-count{font-size:64px}
+  .tasbih-dhikr{font-size:22px}
+  
+  .surah-item{padding:10px;gap:8px}
+  .surah-num{width:38px;height:38px;font-size:13px}
+  .surah-name{font-size:13px}
+  
+  .prayer-row{padding:10px}
+  .prayer-name{font-size:13px}
+  .prayer-time{font-size:15px}
+  
+  .bottom-nav button{font-size:19px;padding:6px}
+             }

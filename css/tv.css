@@ -1,0 +1,811 @@
+/* ============================================================
+   خُشوع — tv.css
+   تصميم خاص للتلفاز — ريموت كنترول
+   ============================================================ */
+
+/* ============ TV Layout ============ */
+body[data-device="tv"]{
+  padding-bottom:0;
+}
+
+body[data-device="tv"] .app{
+  padding-bottom:0;
+  padding-right:250px;
+  max-width:1600px;
+}
+
+body[data-device="tv"] .main{
+  max-width:1400px;
+  padding:26px 32px;
+}
+
+body[data-device="tv"] .bottom-nav{
+  display:none;
+}
+
+body[data-device="tv"] .nav-sidebar{
+  display:flex;
+}
+
+/* ============ TV Header ============ */
+body[data-device="tv"] .app-header{
+  padding:18px 28px;
+  grid-template-columns:auto 1fr auto;
+}
+
+body[data-device="tv"] .brand{
+  font-size:28px;
+  letter-spacing:2px;
+}
+
+body[data-device="tv"] .brand-sub{
+  font-size:13px;
+  letter-spacing:3px;
+}
+
+body[data-device="tv"] .hijri-date{
+  font-size:20px;
+}
+
+body[data-device="tv"] .greg-date{
+  font-size:14px;
+}
+
+/* ============ TV Cards ============ */
+body[data-device="tv"] .card,
+body[data-device="tv"] .nm-card{
+  padding:26px;
+  border-radius:24px;
+  margin-bottom:24px;
+}
+
+body[data-device="tv"] .card h3{
+  font-size:24px;
+  margin-bottom:20px;
+}
+
+/* ============ TV Next Prayer ============ */
+body[data-device="tv"] .next-prayer{
+  padding:28px;
+}
+
+body[data-device="tv"] .np-label{
+  font-size:18px;
+}
+
+body[data-device="tv"] .np-name{
+  font-size:48px;
+  margin-top:8px;
+}
+
+body[data-device="tv"] .np-countdown{
+  font-size:42px;
+  padding:14px 24px;
+  border-radius:16px;
+}
+
+body[data-device="tv"] .np-time{
+  padding:16px 8px;
+  font-size:16px;
+  border-radius:14px;
+}
+
+body[data-device="tv"] .np-time b{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+/* ============ TV Tiles ============ */
+body[data-device="tv"] .grid-menu{
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  margin-bottom:24px;
+}
+
+body[data-device="tv"] .tile{
+  padding:32px 18px;
+  border-radius:24px;
+  gap:12px;
+}
+
+body[data-device="tv"] .tile-icon{
+  font-size:68px;
+}
+
+body[data-device="tv"] .tile-label{
+  font-size:20px;
+  font-weight:800;
+}
+
+/* ============ TV Ticker ============ */
+body[data-device="tv"] .ticker{
+  min-height:120px;
+  padding:22px 30px;
+  margin:20px 26px 24px;
+  border-radius:24px;
+  gap:20px;
+}
+
+body[data-device="tv"] .ticker-label{
+  font-size:24px;
+  padding:18px 24px;
+  border-radius:16px;
+  gap:10px;
+}
+
+body[data-device="tv"] .ticker-track{
+  height:70px;
+}
+
+body[data-device="tv"] .ticker-item{
+  font-size:28px;
+  line-height:70px;
+  padding:0 48px;
+  gap:12px;
+}
+
+body[data-device="tv"] .ticker-item .t-ico{font-size:26px}
+body[data-device="tv"] .ticker-item .t-src{font-size:20px}
+body[data-device="tv"] .ticker-item .t-sep{font-size:22px}
+
+/* ============ TV Surah Items ============ */
+body[data-device="tv"] .surah-item{
+  padding:22px 26px;
+  gap:20px;
+  border-radius:18px;
+}
+
+body[data-device="tv"] .surah-num{
+  width:70px;
+  height:70px;
+  font-size:26px;
+  border-radius:16px;
+}
+
+body[data-device="tv"] .surah-name{
+  font-size:26px;
+}
+
+body[data-device="tv"] .surah-meta{
+  font-size:16px;
+  margin-top:6px;
+}
+
+/* ============ TV Page Head ============ */
+body[data-device="tv"] .page-head{
+  margin-bottom:24px;
+}
+
+body[data-device="tv"] .page-head h2{
+  font-size:36px;
+}
+
+body[data-device="tv"] .icon-btn{
+  width:60px;
+  height:60px;
+  font-size:30px;
+  border-radius:14px;
+}
+
+/* ============ TV Prayer Rows ============ */
+body[data-device="tv"] .prayer-row{
+  padding:24px 30px;
+  border-radius:18px;
+}
+
+body[data-device="tv"] .prayer-name{
+  font-size:26px;
+}
+
+body[data-device="tv"] .prayer-time{
+  font-size:32px;
+}
+
+body[data-device="tv"] .prayer-loc{
+  padding:18px 24px;
+  font-size:20px;
+}
+
+body[data-device="tv"] .prayer-loc .loc-change{
+  padding:12px 22px;
+  font-size:16px;
+}
+
+/* ============ TV Buttons ============ */
+body[data-device="tv"] .btn-primary{
+  padding:20px;
+  font-size:20px;
+  border-radius:16px;
+}
+
+body[data-device="tv"] .btn-secondary{
+  padding:18px 24px;
+  font-size:17px;
+  border-radius:14px;
+}
+
+body[data-device="tv"] .nm-btn{
+  padding:20px 32px;
+  font-size:18px;
+  border-radius:16px;
+}
+
+/* ============ TV Form ============ */
+body[data-device="tv"] select{
+  padding:18px;
+  font-size:18px;
+  border-radius:14px;
+}
+
+body[data-device="tv"] .nm-input{
+  padding:20px 22px;
+  font-size:18px;
+  border-radius:14px;
+}
+
+body[data-device="tv"] .lbl{
+  font-size:18px;
+  margin:20px 0 12px;
+}
+
+body[data-device="tv"] .search-wrap{
+  min-height:76px;
+  padding:0 24px;
+  border-radius:22px;
+}
+
+body[data-device="tv"] .search-wrap input{
+  font-size:20px;
+}
+
+body[data-device="tv"] .search-icon{
+  font-size:26px;
+}
+
+/* ============ TV Dhikr Cards ============ */
+body[data-device="tv"] .dhikr-card{
+  padding:28px;
+  border-radius:22px;
+}
+
+body[data-device="tv"] .dhikr-text{
+  font-size:34px;
+  line-height:2.2;
+}
+
+body[data-device="tv"] .dhikr-count{
+  font-size:16px;
+  padding:8px 18px;
+}
+
+/* ============ TV Name Cards ============ */
+body[data-device="tv"] .names-grid{
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+body[data-device="tv"] .name-card{
+  padding:24px;
+  border-radius:18px;
+}
+
+body[data-device="tv"] .name-ar{
+  font-size:38px;
+}
+
+body[data-device="tv"] .name-num{
+  font-size:16px;
+}
+
+body[data-device="tv"] .name-mean{
+  font-size:15px;
+  margin-top:8px;
+}
+
+/* ============ TV Tasbih ============ */
+body[data-device="tv"] .tasbih-dhikr{
+  font-size:42px;
+}
+
+body[data-device="tv"] .tasbih-count{
+  font-size:120px;
+}
+
+body[data-device="tv"] .tasbih-target{
+  font-size:20px;
+  margin-bottom:40px;
+}
+
+body[data-device="tv"] .tasbih-main-btn{
+  width:280px;
+  height:280px;
+  font-size:32px;
+}
+
+body[data-device="tv"] .tasbih-actions button{
+  padding:18px 32px;
+  font-size:18px;
+}
+
+/* ============ TV Ayah ============ */
+body[data-device="tv"] .ayah-text{
+  font-size:42px;
+}
+
+body[data-device="tv"] .ayah-num{
+  width:48px;
+  height:48px;
+  font-size:20px;
+}
+
+body[data-device="tv"] .bismillah{
+  font-size:38px;
+  padding:26px 0;
+}
+
+/* ============ TV Mushaf ============ */
+body[data-device="tv"] .mushaf-text{
+  font-size:38px;
+  line-height:2.6;
+}
+
+body[data-device="tv"] .mushaf-num{
+  font-size:30px;
+}
+
+body[data-device="tv"] .mushaf-header{
+  font-size:32px;
+}
+
+body[data-device="tv"] .mushaf-surah-sep{
+  font-size:30px;
+  padding:18px;
+  letter-spacing:6px;
+}
+
+body[data-device="tv"] .mushaf-bismillah{
+  font-size:38px;
+}
+
+/* ============ TV Contact ============ */
+body[data-device="tv"] .contact-item{
+  padding:22px 26px;
+  gap:20px;
+  border-radius:18px;
+}
+
+body[data-device="tv"] .contact-icon{
+  font-size:38px;
+  width:60px;
+}
+
+body[data-device="tv"] .contact-info strong{
+  font-size:22px;
+}
+
+body[data-device="tv"] .contact-info span{
+  font-size:16px;
+}
+
+body[data-device="tv"] .dedication-title{
+  font-size:32px;
+}
+
+body[data-device="tv"] .dedication-names{
+  font-size:40px;
+}
+
+body[data-device="tv"] .dedication-line{
+  font-size:24px;
+}
+
+body[data-device="tv"] .dedication-ar{
+  font-size:22px;
+}
+
+/* ============ TV Modal ============ */
+body[data-device="tv"] .modal-content{
+  max-width:900px;
+  padding:36px;
+  border-radius:28px;
+}
+
+body[data-device="tv"] .modal-content h3{
+  font-size:32px;
+  margin-bottom:24px;
+}
+
+body[data-device="tv"] .reciter-option{
+  padding:22px 28px;
+  font-size:20px;
+  border-radius:16px;
+  margin-bottom:12px;
+}
+
+body[data-device="tv"] .city-item{
+  padding:20px 26px;
+  font-size:20px;
+  border-radius:14px;
+  margin-bottom:8px;
+}
+
+body[data-device="tv"] .city-search{
+  padding:20px 22px;
+  font-size:20px;
+  border-radius:14px;
+}
+
+/* ============ TV Adhan Screen ============ */
+body[data-device="tv"] .adhan-screen-title{
+  font-size:48px;
+  letter-spacing:6px;
+}
+
+body[data-device="tv"] .adhan-screen-sub{
+  font-size:24px;
+}
+
+body[data-device="tv"] .adhan-screen-time{
+  font-size:22px;
+  padding:14px 28px;
+}
+
+body[data-device="tv"] .adhan-screen-icon{
+  font-size:140px;
+}
+
+body[data-device="tv"] .adhan-words p{
+  font-size:32px;
+  margin-bottom:20px;
+}
+
+body[data-device="tv"] .adhan-words .highlight{
+  font-size:36px;
+}
+
+body[data-device="tv"] .adhan-screen-btn{
+  padding:28px;
+  font-size:24px;
+  border-radius:22px;
+}
+
+body[data-device="tv"] .adhan-screen-hint{
+  font-size:18px;
+  margin-top:36px;
+}
+
+/* ============ TV Dua Screen ============ */
+body[data-device="tv"] .dua-screen-title{
+  font-size:44px;
+}
+
+body[data-device="tv"] .dua-screen-icon{
+  font-size:120px;
+}
+
+body[data-device="tv"] .dua-text-wrap p{
+  font-size:34px;
+  margin-bottom:18px;
+}
+
+body[data-device="tv"] .dua-text-wrap .dua-highlight{
+  font-size:38px;
+}
+
+body[data-device="tv"] .dua-screen-btn{
+  padding:24px 46px;
+  font-size:22px;
+  border-radius:20px;
+}
+
+/* ============ TV Setup & Permissions ============ */
+body[data-device="tv"] .setup-box,
+body[data-device="tv"] .permissions-box{
+  max-width:800px;
+  padding:50px 40px;
+  border-radius:32px;
+}
+
+body[data-device="tv"] .setup-icon,
+body[data-device="tv"] .perm-icon{
+  font-size:100px;
+  margin-bottom:20px;
+}
+
+body[data-device="tv"] .setup-box h1,
+body[data-device="tv"] .permissions-box h2{
+  font-size:52px;
+  letter-spacing:6px;
+}
+
+body[data-device="tv"] .setup-box .subtitle{
+  font-size:22px;
+  margin-bottom:36px;
+}
+
+body[data-device="tv"] .setup-box p,
+body[data-device="tv"] .permissions-box>p{
+  font-size:22px;
+  line-height:1.9;
+  margin-bottom:36px;
+}
+
+body[data-device="tv"] .setup-choice{
+  padding:36px 24px;
+  border-radius:24px;
+}
+
+body[data-device="tv"] .setup-choice .icon{
+  font-size:72px;
+  margin-bottom:18px;
+}
+
+body[data-device="tv"] .setup-choice .name{
+  font-size:24px;
+  margin-bottom:10px;
+}
+
+body[data-device="tv"] .setup-choice .desc{
+  font-size:16px;
+}
+
+body[data-device="tv"] .perm-card{
+  padding:26px 28px;
+  gap:20px;
+  border-radius:22px;
+  margin-bottom:20px;
+}
+
+body[data-device="tv"] .perm-card-icon{
+  font-size:52px;
+  width:70px;
+}
+
+body[data-device="tv"] .perm-card-info strong{
+  font-size:24px;
+}
+
+body[data-device="tv"] .perm-card-info span{
+  font-size:16px;
+  margin-top:6px;
+}
+
+body[data-device="tv"] .perm-btn{
+  padding:18px 28px;
+  font-size:18px;
+  border-radius:14px;
+}
+
+body[data-device="tv"] .perm-continue{
+  padding:24px;
+  font-size:24px;
+  border-radius:20px;
+  margin-top:24px;
+}
+
+/* ============ TV Ticker (splash) ============ */
+body[data-device="tv"] .splash h1{
+  font-size:96px;
+  letter-spacing:14px;
+}
+
+body[data-device="tv"] .splash-kids{
+  font-size:36px;
+  letter-spacing:8px;
+}
+
+body[data-device="tv"] .splash-icon{
+  font-size:150px;
+}
+
+body[data-device="tv"] .splash-ar{
+  font-size:28px;
+  margin-bottom:50px;
+}
+
+body[data-device="tv"] .splash .loader{
+  width:70px;
+  height:70px;
+  border-width:5px;
+}
+
+/* ============ TV Adhan Settings ============ */
+body[data-device="tv"] .adhan-toggle-btn{
+  padding:24px;
+  border-radius:18px;
+}
+
+body[data-device="tv"] .adhan-toggle-btn .atb-icon{
+  font-size:40px;
+}
+
+body[data-device="tv"] .adhan-toggle-btn .atb-label{
+  font-size:24px;
+}
+
+body[data-device="tv"] .adhan-toggle-btn .atb-status{
+  padding:12px 24px;
+  font-size:18px;
+  border-radius:26px;
+}
+
+body[data-device="tv"] .volume-slider-wrap{
+  padding:22px 0;
+}
+
+body[data-device="tv"] .volume-slider-wrap .vol-icon{
+  font-size:34px;
+  width:50px;
+}
+
+body[data-device="tv"] .volume-slider-wrap input[type=range]{
+  height:12px;
+}
+
+body[data-device="tv"] .volume-slider-wrap input[type=range]::-webkit-slider-thumb{
+  width:36px;
+  height:36px;
+  border-width:4px;
+}
+
+body[data-device="tv"] .volume-value{
+  font-size:22px;
+  min-width:80px;
+}
+
+body[data-device="tv"] .audio-choice{
+  padding:22px 26px;
+  border-radius:18px;
+}
+
+body[data-device="tv"] .audio-choice-info strong{
+  font-size:22px;
+}
+
+body[data-device="tv"] .audio-choice-info span{
+  font-size:16px;
+  margin-top:4px;
+}
+
+body[data-device="tv"] .audio-choice-btn{
+  width:60px;
+  height:60px;
+  font-size:24px;
+}
+
+body[data-device="tv"] .prayer-mode-btn{
+  padding:20px 12px;
+  border-radius:16px;
+}
+
+body[data-device="tv"] .prayer-mode-btn .pm-ico{
+  font-size:32px;
+}
+
+body[data-device="tv"] .prayer-mode-btn .pm-lbl{
+  font-size:16px;
+}
+
+body[data-device="tv"] .prayer-mode-head{
+  font-size:22px;
+}
+
+body[data-device="tv"] .prayer-mode-head .p-time-s{
+  font-size:20px;
+}
+
+/* ============ TV Focus (Critical) ============ */
+body[data-device="tv"] *:focus{
+  outline:none;
+}
+
+body[data-device="tv"] .focused,
+body[data-device="tv"] button:focus,
+body[data-device="tv"] .tile:focus,
+body[data-device="tv"] .icon-btn:focus,
+body[data-device="tv"] .nm-btn:focus,
+body[data-device="tv"] .reciter-option:focus,
+body[data-device="tv"] .city-item:focus,
+body[data-device="tv"] .setup-choice:focus,
+body[data-device="tv"] .perm-card:focus,
+body[data-device="tv"] .adhan-toggle-btn:focus,
+body[data-device="tv"] .prayer-mode-btn:focus,
+body[data-device="tv"] .audio-choice:focus,
+body[data-device="tv"] .surah-item:focus,
+body[data-device="tv"] .prayer-row:focus,
+body[data-device="tv"] .name-card:focus,
+body[data-device="tv"] .contact-item:focus,
+body[data-device="tv"] select:focus,
+body[data-device="tv"] input:focus,
+body[data-device="tv"] .sb-item:focus{
+  outline:5px solid var(--focus-color)!important;
+  outline-offset:4px!important;
+  box-shadow:
+    0 0 40px rgba(255,215,0,.8),
+    0 0 0 8px rgba(255,215,0,.25)!important;
+  transform:scale(1.06)!important;
+  z-index:100!important;
+  position:relative;
+  transition:all .15s ease-out;
+}
+
+body[data-device="tv"] .tile.focused{
+  background:linear-gradient(135deg,var(--primary),var(--primary-2))!important;
+  color:#fff!important;
+}
+
+body[data-device="tv"] .tile.focused .tile-label{color:#fff!important}
+
+body[data-device="tv"] .surah-item.focused{
+  background:linear-gradient(90deg,var(--primary),var(--primary-2))!important;
+  color:#fff!important;
+}
+
+body[data-device="tv"] .surah-item.focused .surah-name{color:#fff!important}
+body[data-device="tv"] .surah-item.focused .surah-meta{color:var(--gold-2)!important}
+
+body[data-device="tv"] .prayer-row.focused{
+  background:linear-gradient(90deg,var(--primary),var(--primary-2))!important;
+  color:#fff!important;
+}
+
+body[data-device="tv"] .prayer-row.focused .prayer-time{color:var(--gold)!important}
+
+body[data-device="tv"] .name-card.focused{
+  background:linear-gradient(135deg,var(--primary),var(--primary-2))!important;
+  color:#fff!important;
+}
+
+body[data-device="tv"] .name-card.focused .name-ar{color:var(--gold-2)!important}
+body[data-device="tv"] .name-card.focused .name-mean{color:rgba(255,255,255,.8)!important}
+
+body[data-device="tv"] .contact-item.focused{
+  background:linear-gradient(90deg,var(--primary),var(--primary-2))!important;
+  color:#fff!important;
+}
+
+body[data-device="tv"] .contact-item.focused .contact-info span{color:var(--gold-2)!important}
+
+body[data-device="tv"] .reciter-option.focused,
+body[data-device="tv"] .city-item.focused{
+  background:linear-gradient(135deg,var(--primary),var(--primary-2))!important;
+  color:#fff!important;
+  border-color:var(--gold)!important;
+}
+
+body[data-device="tv"] .setup-choice.focused{
+  border-color:var(--gold)!important;
+  background:linear-gradient(145deg,#fff9ec,#f5d885)!important;
+}
+
+body[data-device="tv"] .perm-btn.focused{
+  background:linear-gradient(145deg,var(--gold),var(--gold-2))!important;
+  color:var(--primary)!important;
+}
+
+body[data-device="tv"] .adhan-toggle-btn.focused{
+  transform:scale(1.03)!important;
+}
+
+body[data-device="tv"] .nav-sidebar .sb-item.focused{
+  outline:5px solid var(--focus-color)!important;
+  outline-offset:-5px!important;
+  background:var(--primary)!important;
+  color:#fff!important;
+}
+
+/* ============ TV Smooth Scroll ============ */
+body[data-device="tv"] *{
+  scroll-behavior:smooth;
+}
+
+/* ============ TV Loading Overlay ============ */
+body[data-device="tv"] .loading-overlay .loader{
+  width:80px;
+  height:80px;
+  border-width:5px;
+}
+
+body[data-device="tv"] .loading-overlay .loading-text{
+  font-size:20px;
+}

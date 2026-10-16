@@ -1,0 +1,247 @@
+/* ============================================================
+   خُشوع — landscape.css
+   الوضع الأفقي (تدوير الهاتف)
+   ============================================================ */
+
+@media (orientation:landscape) and (max-height:600px){
+  /* ============ عام ============ */
+  body{
+    padding-bottom:60px;
+  }
+  
+  .app{
+    padding:8px 8px 0;
+    max-width:100%;
+  }
+  
+  .main{
+    padding:10px;
+    max-width:100%;
+  }
+  
+  /* ============ Header ============ */
+  .app-header{
+    padding:8px 12px;
+    grid-template-columns:auto 1fr auto;
+  }
+  
+  .brand{font-size:16px}
+  .brand-sub{font-size:8px}
+  .hijri-date{font-size:13px}
+  .greg-date{font-size:9px}
+  .icon-btn{width:34px;height:34px;font-size:15px}
+  
+  /* ============ Ticker ============ */
+  .ticker{
+    min-height:60px;
+    padding:8px 12px;
+    margin:8px 10px 10px;
+    border-radius:14px;
+    gap:10px;
+  }
+  
+  .ticker-label{
+    font-size:12px;
+    padding:7px 10px;
+  }
+  
+  .ticker-track{height:36px}
+  .ticker-item{font-size:13px;padding:0 14px;line-height:36px}
+  
+  /* ============ Next Prayer ============ */
+  .next-prayer{
+    padding:12px;
+    margin-bottom:10px;
+  }
+  
+  .np-name{font-size:20px}
+  .np-countdown{font-size:18px;padding:5px 10px}
+  .np-times{gap:4px}
+  .np-time{padding:6px 3px;font-size:10px}
+  .np-time b{font-size:10px}
+  
+  /* ============ Grid Menu ============ */
+  .grid-menu{
+    grid-template-columns:repeat(5,1fr);
+    gap:8px;
+    margin-bottom:10px;
+  }
+  
+  .tile{
+    padding:12px 6px;
+    border-radius:14px;
+  }
+  
+  .tile-icon{font-size:26px}
+  .tile-label{font-size:10px}
+  
+  /* ============ Cards ============ */
+  .card{padding:12px;border-radius:14px;margin-bottom:10px}
+  .card h3{font-size:13px;margin-bottom:10px}
+  
+  /* ============ Page Head ============ */
+  .page-head{margin-bottom:10px}
+  .page-head h2{font-size:16px}
+  
+  /* ============ Surah Items ============ */
+  .surah-list{
+    grid-template-columns:repeat(2,1fr);
+    display:grid;
+    gap:6px;
+  }
+  
+  .surah-item{padding:10px;gap:8px}
+  .surah-num{width:36px;height:36px;font-size:13px}
+  .surah-name{font-size:13px}
+  .surah-meta{font-size:9px}
+  
+  /* ============ Prayer Rows ============ */
+  .prayer-list{
+    grid-template-columns:repeat(2,1fr);
+    display:grid;
+    gap:6px;
+  }
+  
+  .prayer-row{padding:10px}
+  .prayer-name{font-size:13px}
+  .prayer-time{font-size:14px}
+  
+  /* ============ Names ============ */
+  .names-grid{
+    grid-template-columns:repeat(4,1fr);
+    gap:6px;
+  }
+  
+  .name-card{padding:10px}
+  .name-ar{font-size:18px}
+  .name-mean{font-size:9px}
+  .name-num{font-size:9px}
+  
+  /* ============ Mushaf ============ */
+  .mushaf-view{
+    padding:14px 16px;
+    min-height:auto;
+    max-height:calc(100vh - 180px);
+    overflow-y:auto;
+  }
+  
+  .mushaf-text{font-size:20px;line-height:2.1}
+  .mushaf-num{font-size:16px}
+  .mushaf-header{font-size:16px;padding-bottom:10px;margin-bottom:12px}
+  .mushaf-bismillah{font-size:22px;padding:6px 0 10px}
+  .mushaf-surah-sep{font-size:16px;padding:8px;margin:12px 0 10px}
+  
+  /* ============ Quran ============ */
+  .surah-content{
+    max-height:calc(100vh - 200px);
+    padding:12px;
+  }
+  
+  .ayah{padding:10px;margin-bottom:8px}
+  .ayah-text{font-size:var(--quran-fs,24px)}
+  .ayah-num{width:26px;height:26px;font-size:11px}
+  .bismillah{font-size:22px;padding:12px 0}
+  
+  /* ============ Qibla ============ */
+  .compass{width:200px;height:200px;margin-bottom:14px}
+  .qibla-info{font-size:11px;margin-bottom:14px}
+  .qibla-info strong{font-size:16px}
+  
+  .qibla-full-compass{
+    width:min(50vh,260px);
+    height:min(50vh,260px);
+    margin-bottom:14px;
+  }
+  
+  .qibla-full-deg{font-size:24px}
+  .qibla-full-status{font-size:13px;margin-bottom:12px}
+  .qibla-full-header{font-size:18px;margin-bottom:6px}
+  .qibla-full-sub{font-size:12px;margin-bottom:14px}
+  .qibla-kaaba-icon{font-size:44px;margin-top:20px}
+  .qibla-cardinal{font-size:16px}
+  
+  /* ============ Setup ============ */
+  .setup-box{padding:20px 22px;max-width:680px}
+  .setup-icon{font-size:40px;margin-bottom:8px}
+  .setup-box h1{font-size:28px}
+  .setup-box .subtitle{font-size:12px;margin-bottom:14px}
+  .setup-box p{font-size:12px;margin-bottom:14px}
+  .setup-choices{gap:10px;margin-bottom:12px}
+  .setup-choice{padding:16px 12px;border-radius:14px}
+  .setup-choice .icon{font-size:30px;margin-bottom:6px}
+  .setup-choice .name{font-size:14px}
+  .setup-choice .desc{font-size:10px}
+  
+  /* ============ Permissions ============ */
+  .permissions-box{
+    padding:20px 22px;
+    max-width:760px;
+  }
+  
+  .perm-icon{font-size:44px}
+  .permissions-box h2{font-size:22px;margin-bottom:6px}
+  .permissions-box>p{font-size:12px;margin-bottom:16px}
+  .perm-card{padding:10px 14px;margin-bottom:10px;gap:10px}
+  .perm-card-icon{font-size:24px;width:36px}
+  .perm-card-info strong{font-size:13px}
+  .perm-card-info span{font-size:11px}
+  .perm-btn{padding:9px 14px;font-size:12px}
+  .perm-continue{padding:12px;font-size:13px;margin-top:10px}
+  .perm-note{font-size:10px;margin-top:8px}
+  
+  /* ============ Splash ============ */
+  .splash-icon{font-size:60px}
+  .splash h1{font-size:40px;letter-spacing:4px}
+  .splash-kids{font-size:17px;letter-spacing:3px}
+  .splash-divider{margin:10px auto;width:70px}
+  .splash-ar{font-size:14px;margin-bottom:16px}
+  .splash .loader{width:36px;height:36px}
+  
+  /* ============ Adhan Screen ============ */
+  .adhan-screen-inner{padding:10px 0}
+  .adhan-screen-icon{font-size:52px;margin-bottom:8px}
+  .adhan-screen-title{font-size:22px;letter-spacing:2px}
+  .adhan-screen-sub{font-size:12px;margin-bottom:14px}
+  .adhan-screen-time{font-size:12px;padding:6px 12px;margin-bottom:14px}
+  .adhan-words{padding:14px;margin-bottom:16px;border-radius:14px}
+  .adhan-words p{font-size:15px;line-height:1.9;margin-bottom:8px}
+  .adhan-words .highlight{font-size:17px}
+  .adhan-screen-actions{gap:8px;max-width:360px}
+  .adhan-screen-btn{padding:11px;font-size:13px;border-radius:12px}
+  .adhan-screen-hint{font-size:10px;margin-top:12px}
+  
+  /* ============ Dua Screen ============ */
+  .dua-screen-icon{font-size:48px;margin-bottom:10px}
+  .dua-screen-title{font-size:20px}
+  .dua-screen-sub{font-size:11px;margin-bottom:14px}
+  .dua-text-wrap{padding:16px;margin-bottom:14px;border-radius:14px}
+  .dua-text-wrap p{font-size:16px;line-height:2;margin-bottom:8px}
+  .dua-text-wrap .dua-highlight{font-size:18px;margin:10px 0}
+  .dua-screen-btn{padding:11px 20px;font-size:13px;border-radius:12px}
+  
+  /* ============ Tasbih ============ */
+  .tasbih-card{padding:16px}
+  .tasbih-dhikr{font-size:20px;margin-bottom:10px}
+  .tasbih-count{font-size:56px}
+  .tasbih-target{margin-bottom:16px}
+  .tasbih-main-btn{width:150px;height:150px;font-size:16px}
+  .tasbih-actions{margin-top:16px;gap:6px}
+  
+  /* ============ Ticker (splash) ============ */
+  .bottom-nav{padding:4px 0}
+  .bottom-nav button{padding:5px;font-size:18px}
+}
+
+/* ============ iPhone X Landscape ============ */
+@media (orientation:landscape) and (max-height:430px){
+  .ticker{display:none}
+  
+  .grid-menu{grid-template-columns:repeat(6,1fr)}
+  
+  .tile-icon{font-size:22px}
+  .tile-label{font-size:9px}
+  
+  .names-grid{grid-template-columns:repeat(5,1fr)}
+  
+  .compass{width:180px;height:180px}
+      }
